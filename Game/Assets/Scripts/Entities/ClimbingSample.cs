@@ -48,16 +48,6 @@ public class ClimbingSample : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        if (dir.y > 0.1f)
-        {
-            climber.ClimbUp(ClimbSpeed);
-        }
-        if (dir.y < -0.1f)
-        {
-            climber.ClimbDown(ClimbSpeed);
-        }
-
         if (climber.Climbing)
         {
             if (dir.x > 0.1f)
@@ -79,6 +69,15 @@ public class ClimbingSample : MonoBehaviour
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
+        }
+
+        if (dir.y > 0.1f)
+        {
+            climber.ClimbUp(ClimbSpeed);
+        }
+        if (dir.y < -0.1f)
+        {
+            climber.ClimbDown(ClimbSpeed);
         }
 
         if (climber.Climbing && dir.magnitude < 0.1f)

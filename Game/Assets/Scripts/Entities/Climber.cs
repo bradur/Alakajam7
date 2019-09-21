@@ -57,8 +57,11 @@ public class Climber : MonoBehaviour
     {
         if (stairs != null)
         {
-            grabbed = true;
-            ClimbTowards(stairs.Top, speed);
+            if (stairs.Top.y > transform.position.y + 0.1f)
+            {
+                grabbed = true;
+                ClimbTowards(stairs.Top, speed);
+            }
         }
     }
 
@@ -66,8 +69,11 @@ public class Climber : MonoBehaviour
     {
         if (stairs != null)
         {
-            grabbed = true;
-            ClimbTowards(stairs.Bottom, speed);
+            if (stairs.Bottom.y < transform.position.y - 0.1f)
+            {
+                grabbed = true;
+                ClimbTowards(stairs.Bottom, speed);
+            }
         }
     }
 
@@ -101,7 +107,7 @@ public class Climber : MonoBehaviour
             {
                 realTarget = stairs.Bottom;
             }
-            else if (stairs.Top.y < transform.position.y - 0.1f)
+            else if (stairs.Top.y < transform.position.y - 0.2f)
             {
                 realTarget = stairs.Top;
             }
@@ -109,7 +115,7 @@ public class Climber : MonoBehaviour
             {
                 var stairsDir = stairs.Top - stairs.Bottom;
 
-                var nearestStairsPoint = NearestPointOnLine(stairs.Bottom, stairsDir, transform.position);
+                var nearestStairsPoint = SmartestPointOnLine(stairs.Bottom, stairsDir, transform.position);
                 if (DistanceTo(nearestStairsPoint) > 0.1f)
                 {
                     realTarget = nearestStairsPoint;
@@ -146,6 +152,13 @@ public class Climber : MonoBehaviour
         var v = pnt - linePnt;
         var d = Vector3.Dot(v, lineDir);
         return linePnt + lineDir * d;
+    }
+
+    private static Vector2 SmartestPointOnLine(Vector2 linePnt, Vector2 lineDir, Vector2 pnt)
+    {
+        lineDir.Normalize();
+        var x = lineDir.y / lineDir.x * (pnt.y - linePnt.y) + linePnt.x;
+        return new Vector2(x, pnt.y);
     }
 
 }
