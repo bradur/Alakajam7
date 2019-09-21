@@ -15,9 +15,14 @@ MonoBehaviour:
   movesInitially: 1
   stopAtLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 2048
   onlyMovesOnLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 768
   speed: 7.08
   direction: 1
+  flipDirectionWhenCollidingWith:
+    serializedVersion: 2
+    m_Bits: 0
+  climbDownStairs: 0
+  climbingSpeed: 10

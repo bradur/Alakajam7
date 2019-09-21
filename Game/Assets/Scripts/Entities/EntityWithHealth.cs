@@ -21,6 +21,7 @@ public class EntityWithHealth : MonoBehaviour
 
     public UpdateHealthEvent updateHealthEvent;
 
+    private int maxHealth;
     private int health;
 
     public int Health { get { return health; } }
@@ -29,6 +30,7 @@ public class EntityWithHealth : MonoBehaviour
     {
         if (config != null)
         {
+            maxHealth = config.Health;
             health = config.Health;
             UpdateHealth(health);
         }
@@ -39,13 +41,27 @@ public class EntityWithHealth : MonoBehaviour
     }
 
     public void LoseHealth(int amount) {
-        Debug.Log("I am " + name + " and I'm losing " + amount + " health!");
+        //Debug.Log("I am " + name + " and I'm losing " + amount + " health!");
         health -= amount;
+        if (health < 0) {
+            health = 0;
+        }
+        UpdateHealth(health);
+    }
+
+    public void AddHealth(int amount) {
+        health += amount;
+        if (health > maxHealth) {
+            health = maxHealth;
+        }
         UpdateHealth(health);
     }
 
     public void UpdateHealth(int currentHealth)
     {
+        if (currentHealth > maxHealth) {
+            currentHealth = maxHealth;
+        }
         if (updateHealthEvent == null)
         {
             updateHealthEvent = new UpdateHealthEvent();
