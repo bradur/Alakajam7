@@ -19,7 +19,7 @@ public class FlightSpawner : MonoBehaviour
         
     }
 
-    public GameObject getSpawner()
+    public GameObject GetSpawner()
     {
         return spawner;
     }

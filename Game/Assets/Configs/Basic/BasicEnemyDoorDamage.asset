@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a46e2cfc43f740248a10685e44680bcc, type: 3}
-  m_Name: BasicEnemyHealth
+  m_Script: {fileID: 11500000, guid: ecde12b002b472146a6f853b311355e9, type: 3}
+  m_Name: BasicEnemyDoorDamage
   m_EditorClassIdentifier: 
-  health: 5
-  takeDamageFromLayers:
+  targetLayers:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 2048
+  damageDealInterval: 2
+  damageMin: 1
+  damageMax: 5
+  initialIntervalIsZero: 1

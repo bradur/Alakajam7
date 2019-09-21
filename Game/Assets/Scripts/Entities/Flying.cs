@@ -6,26 +6,15 @@ public class Flying : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D body;
+
     [SerializeField]
-    private float speed;
+    private FlightMovementConfig flightConfig;
     [SerializeField]
-    private float flapTime = 0.1f;
-    [SerializeField]
-    private float flapSpeedDampen = 0.95f;
-    [SerializeField]
-    private float fallSpeed = -3f;
-    [SerializeField]
-    private Cargo cargo;
-    [SerializeField]
-    private float distanceForDropOffMode = 18;
-    [SerializeField]
-    private float distanceForDropOffAfterTarget = 3;
+    private CargoDropConfig cargoConfig;
 
     private float lastFlap;
-    private float flapVel = 5f;
 
     private float origin;
-    private float flapUntil = 2;
     private bool flapFlag = true;
     private bool flyToDropOff = false;
     private bool dropOff = false;
@@ -33,9 +22,18 @@ public class Flying : MonoBehaviour
 
     private GameObject dropOffTarget;
 
+    [SerializeField]
+    private Transform cargoPosition;
+
+    private Cargo cargo;
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("start");
+        cargo = Instantiate(cargoConfig.CargoPrefab);
+        cargo.Initialize();
+        cargo.transform.SetParent(transform);
+        cargo.transform.position = cargoPosition.position;
         lastFlap = Time.fixedTime;
         origin = transform.position.y;
         cargo.SetGravityOff();
@@ -52,8 +50,7 @@ public class Flying : MonoBehaviour
         else if(flyToDropOff)
         {
             body.velocity = dropOffFlight;
-            Debug.Log(dropOffTarget.transform.position.x - transform.position.x + ", " + distanceForDropOffAfterTarget);
-            if (dropOffTarget.transform.position.x - transform.position.x > distanceForDropOffAfterTarget)
+            if (dropOffTarget.transform.position.x - transform.position.x > cargoConfig.DistanceForDropOffAfterTarget)
             {
                 dropOff = true;
                 flyToDropOff = false;
@@ -63,32 +60,32 @@ public class Flying : MonoBehaviour
         {
             if (flapFlag)
             {
-                if (Time.fixedTime - lastFlap >= flapTime)
+                if (Time.fixedTime - lastFlap >= flightConfig.FlapInterval)
                 {
-                    body.velocity = new Vector2(body.velocity.x, flapVel);
+                    body.velocity = new Vector2(body.velocity.x, flightConfig.FlapVelocity);
                     lastFlap = Time.fixedTime;
                 }
                 else
                 {
-                    body.velocity = new Vector2(body.velocity.x, flapSpeedDampen * body.velocity.y);
+                    body.velocity = new Vector2(body.velocity.x, flightConfig.FlapSpeedDampen * body.velocity.y);
                 }
-                body.velocity = new Vector2(-Time.fixedDeltaTime * speed * 10, body.velocity.y);
+                body.velocity = new Vector2(-Time.fixedDeltaTime * flightConfig.Speed * 10, body.velocity.y);
             }
             else
             {
-                body.velocity = new Vector2(-Time.fixedDeltaTime * speed * 10, fallSpeed);
+                body.velocity = new Vector2(-Time.fixedDeltaTime * flightConfig.Speed * 10, flightConfig.FallSpeed);
             }
 
-            if (transform.position.y - origin > flapUntil)
+            if (transform.position.y - origin > flightConfig.FlapUntil)
             {
                 flapFlag = false;
             }
-            else if (origin - transform.position.y > flapUntil)
+            else if (origin - transform.position.y > flightConfig.FlapUntil)
             {
                 flapFlag = true;
             }
 
-            if (transform.position.x - dropOffTarget.transform.position.x < distanceForDropOffMode)
+            if (transform.position.x - dropOffTarget.transform.position.x < cargoConfig.TargetDetectionDistance)
             {
                 flyToDropOff = true;
                 float currentSpeed = body.velocity.magnitude;

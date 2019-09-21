@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Cargo : MonoBehaviour
 {
-    [SerializeField]
+
     private Rigidbody2D body;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+    }
+
+    public void Initialize() {
+        body = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
