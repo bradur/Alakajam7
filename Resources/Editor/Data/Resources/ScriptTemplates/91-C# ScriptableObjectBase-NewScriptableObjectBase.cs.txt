@@ -1,0 +1,17 @@
+// Date   : #CREATIONDATE#
+// Project: #PROJECTNAME#
+// Author : #AUTHOR#
+
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+[CreateAssetMenu(fileName = "#SCRIPTNAME# ", menuName = "ScriptableObjects/New #SCRIPTNAME#")]
+public class #SCRIPTNAME# : ScriptableObject
+{
+
+    [SerializeField]
+    private string configName;
+    public string Name { get { return configName; } }
+
+}
