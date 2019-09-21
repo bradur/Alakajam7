@@ -15,6 +15,12 @@ public class SpawnerManager : MonoBehaviour
     private EnemyPrefabConfig enemyPrefabConfig;
     [SerializeField]
     private GameObject cargoTarget;
+    [SerializeField]
+    private Transform groundSpawnPoint;
+    [SerializeField]
+    private Transform midSpawnPoint;
+    [SerializeField]
+    private Transform highSpawnPoint;
 
     private bool waveOngoing = false;
     private int currentWave = -1;
@@ -127,6 +133,20 @@ public class SpawnerManager : MonoBehaviour
                     flyingObj.SetDropOffTarget(cargoTarget);
                 }
             }
+
+            if(enemy.spawn == SpawnPoint.Mid)
+            {
+                obj.transform.position = midSpawnPoint.position;
+            }
+            else if(enemy.spawn == SpawnPoint.High)
+            {
+                obj.transform.position = highSpawnPoint.position;
+            }
+            else
+            {
+                obj.transform.position = groundSpawnPoint.position;
+            }
+
             yield return new WaitForSeconds(currentGroupData.interval);
         }
 
