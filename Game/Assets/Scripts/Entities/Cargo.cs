@@ -6,6 +6,7 @@ public class Cargo : MonoBehaviour
 {
 
     private Rigidbody2D body;
+    private CapsuleCollider2D capsuleCollider2D;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,7 @@ public class Cargo : MonoBehaviour
 
     public void Initialize() {
         body = GetComponent<Rigidbody2D>();
+        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -26,11 +28,13 @@ public class Cargo : MonoBehaviour
     {
         body.gravityScale = 1;
         body.isKinematic = false;
+        capsuleCollider2D.enabled = true;
     }
 
     public void SetGravityOff()
     {
         body.gravityScale = 0;
         body.isKinematic = true;
+        capsuleCollider2D.enabled = false;
     }
 }

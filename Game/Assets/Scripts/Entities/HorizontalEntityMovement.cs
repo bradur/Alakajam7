@@ -79,6 +79,10 @@ public class HorizontalEntityMovement : MonoBehaviour
                 Debug.Log("<color=red>No climber on " + gameObject.name + "!</color>");
             }
         }
+        if (shouldMove && grounded && !stopped)
+        {
+            rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
+        }
     }
 
     void ReactToCollisionOrTriggerEnter(GameObject collisionGameObject)
@@ -156,9 +160,5 @@ public class HorizontalEntityMovement : MonoBehaviour
             return;
         }
         Debug.Log("ShouldMove:" + shouldMove + " Grounded: " + grounded + " Stopped: " + stopped);
-        if (shouldMove && grounded && !stopped)
-        {
-            rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
-        }
     }
 }

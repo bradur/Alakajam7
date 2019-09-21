@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 6623038411875845692}
   - component: {fileID: 6623038411875845694}
   - component: {fileID: 6623038411875845665}
+  - component: {fileID: -7043828728020198253}
   m_Layer: 14
   m_Name: GroundEnemy
   m_TagString: Untagged
@@ -440,6 +441,21 @@ CapsuleCollider2D:
   m_Offset: {x: -0.04703152, y: 3.65}
   m_Size: {x: 3.4159496, y: 7.3022118}
   m_Direction: 0
+--- !u!114 &-7043828728020198253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6623038411875845666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b0fc87d2b9a3c4f9b411a0a9582b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClimbingLayer:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!1 &6623038411937947178
 GameObject:
   m_ObjectHideFlags: 0
