@@ -1,0 +1,17 @@
+﻿// Date   : #CREATIONDATE#
+// Project: #PROJECTNAME#
+// Author : #AUTHOR#
+
+using UnityEngine;
+using System.Collections;
+
+public class #SCRIPTNAME# : MonoBehaviour {
+
+    void Start () {
+    
+    }
+
+    void Update () {
+    
+    }
+}
