@@ -17,12 +17,16 @@ public class ClimbingSample : MonoBehaviour
 
     private float jumpTimer = 0.0f;
 
+    private int towerMask;
+
 
     // Start is called before the first frame update
     void Start()
     {
         climber = GetComponent<Climber>();
         rb = GetComponent<Rigidbody2D>();
+
+        towerMask = LayerMask.GetMask("Tower");
     }
     
     // Update is called once per frame
@@ -39,10 +43,21 @@ public class ClimbingSample : MonoBehaviour
         {
             jump = false;
         }
+        Debug.Log(jump);
     }
 
     void FixedUpdate()
     {
+
+        if (dir.y > 0.1f)
+        {
+            climber.ClimbUp(ClimbSpeed);
+        }
+        if (dir.y < -0.1f)
+        {
+            climber.ClimbDown(ClimbSpeed);
+        }
+
         if (climber.Climbing)
         {
             if (dir.x > 0.1f)
@@ -56,7 +71,7 @@ public class ClimbingSample : MonoBehaviour
         }
         else
         {
-            if (Mathf.Abs(dir.x) > 0.1f)
+            if (Mathf.Abs(dir.x) > 0.1f && HasRoom(dir.x))
             {
                 rb.velocity = new Vector2(dir.x * MoveSpeed, rb.velocity.y);
             }
@@ -66,20 +81,16 @@ public class ClimbingSample : MonoBehaviour
             }
         }
 
-        if (dir.y > 0.1f)
+        if (climber.Climbing && dir.magnitude < 0.1f)
         {
-            climber.ClimbUp(ClimbSpeed);
-        }
-        if (dir.y < -0.1f)
-        {
-            climber.ClimbDown(ClimbSpeed);
+            rb.velocity = Vector2.zero;
         }
 
         if (jump)
         {
             if (climber.Climbing || IsGrounded())
             {
-                Debug.Log("JUMP!");
+                rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(0, JumpSpeed));
                 climber.Release();
                 jump = false;
@@ -89,6 +100,21 @@ public class ClimbingSample : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return true;
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector2(1.0f, 0.1f), 0.0f, Vector2.down, 0.2f, towerMask);
+        if (hit.collider != null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private bool HasRoom(float direction)
+    {
+        RaycastHit2D hit = Physics2D.BoxCast((Vector2)transform.position + Vector2.up * 0.5f, new Vector2(0.1f, 1.0f), 0.0f, new Vector2(direction, 0.0f), 0.5f, towerMask);
+        if (hit.collider == null)
+        {
+            return true;
+        }
+        return false;
     }
 }
