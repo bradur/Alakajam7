@@ -7,9 +7,9 @@ public class FlyingTestManager : MonoBehaviour
     [SerializeField]
     private Flying flyingPrefab;
     [SerializeField]
-    private FlightPath highPath;
+    private FlightSpawner highPath;
     [SerializeField]
-    private FlightPath lowPath;
+    private FlightSpawner lowPath;
     [SerializeField]
     private GameObject dropOffTarget;
 
