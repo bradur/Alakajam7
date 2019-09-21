@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb4afaf9f9f54b42aba730cfa8f274e, type: 3}
   m_Name: Wave2
   m_EditorClassIdentifier: 
-  startDelay: 10
   duration: 30
   groups:
   - startDelay: 1
@@ -22,6 +21,78 @@ MonoBehaviour:
       spawn: 1
     - type: 1
       spawn: 1
+  - startDelay: 2
+    interval: 1
+    enemies:
+    - type: 0
+      spawn: 0
+    - type: 1
+      spawn: 1
+    - type: 1
+      spawn: 2
+  - startDelay: 2
+    interval: 1
+    enemies:
+    - type: 0
+      spawn: 0
+    - type: 1
+      spawn: 1
+    - type: 1
+      spawn: 2
+  - startDelay: 2
+    interval: 1
+    enemies:
+    - type: 0
+      spawn: 0
+    - type: 1
+      spawn: 1
+    - type: 1
+      spawn: 2
+  - startDelay: 2
+    interval: 1
+    enemies:
+    - type: 0
+      spawn: 0
+    - type: 1
+      spawn: 1
+    - type: 1
+      spawn: 2
+  - startDelay: 2
+    interval: 1
+    enemies:
+    - type: 0
+      spawn: 0
+    - type: 1
+      spawn: 1
+    - type: 1
+      spawn: 2
+  - startDelay: 2
+    interval: 1
+    enemies:
+    - type: 0
+      spawn: 0
+    - type: 1
+      spawn: 1
+    - type: 1
+      spawn: 2
+  - startDelay: 2
+    interval: 1
+    enemies:
+    - type: 0
+      spawn: 0
+    - type: 1
+      spawn: 1
+    - type: 1
+      spawn: 2
+  - startDelay: 2
+    interval: 1
+    enemies:
+    - type: 0
+      spawn: 0
+    - type: 1
+      spawn: 1
+    - type: 1
+      spawn: 2
   - startDelay: 2
     interval: 1
     enemies:
