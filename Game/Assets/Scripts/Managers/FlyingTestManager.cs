@@ -27,7 +27,7 @@ public class FlyingTestManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            FlightPath parent = lowPath;
+            FlightSpawner parent = lowPath;
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 parent = highPath;
