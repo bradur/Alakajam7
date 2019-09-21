@@ -40,10 +40,6 @@ public class HorizontalEntityMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        /*if (shouldMove && canMove)
-        {
-            rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
-        }*/
         if (config.ClimbDownStairs)
         {
             if (climber != null)
