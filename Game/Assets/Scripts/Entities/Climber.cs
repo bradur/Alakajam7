@@ -116,7 +116,10 @@ public class Climber : MonoBehaviour
             {
                 var stairsDir = stairs.Top - stairs.Bottom;
 
+                Debug.DrawLine(stairs.Bottom, stairs.Bottom + stairsDir);
                 var nearestStairsPoint = SmartestPointOnLine(stairs.Bottom, stairsDir, transform.position);
+                Debug.DrawLine(transform.position, nearestStairsPoint);
+
                 if (DistanceTo(nearestStairsPoint) > 0.1f)
                 {
                     realTarget = nearestStairsPoint;
@@ -124,6 +127,10 @@ public class Climber : MonoBehaviour
             }
 
             Vector2 realDiff = realTarget - (Vector2)transform.position;
+
+            Debug.DrawLine(transform.position, stairs.Bottom);
+            Debug.DrawLine(transform.position, stairs.Top);
+
             realDiff.Normalize();
             rb.velocity = realDiff * speed;
         }
@@ -157,8 +164,7 @@ public class Climber : MonoBehaviour
 
     private static Vector2 SmartestPointOnLine(Vector2 linePnt, Vector2 lineDir, Vector2 pnt)
     {
-        lineDir.Normalize();
-        var x = lineDir.y / lineDir.x * (pnt.y - linePnt.y) + linePnt.x;
+        var x = linePnt.x + lineDir.x / lineDir.y * (pnt.y - linePnt.y);
         return new Vector2(x, pnt.y);
     }
 
