@@ -11,14 +11,14 @@ GameObject:
   - component: {fileID: 6868110273790485203}
   - component: {fileID: 7634155186135814995}
   - component: {fileID: 1405690231417428059}
-  - component: {fileID: -379979555547324146}
   - component: {fileID: 4879987410860729020}
+  - component: {fileID: 8270857680407380585}
   - component: {fileID: 6868110273790485200}
   - component: {fileID: 6868110273790485201}
   - component: {fileID: 3999633500312635264}
   - component: {fileID: -3401786288805034500}
   m_Layer: 14
-  m_Name: Goblin
+  m_Name: CargoGoblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,20 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e42f4aaef4d4947a2e0ab2cf153c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 7f6c363f8bf8530488415da30a7483c6, type: 2}
---- !u!114 &-379979555547324146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6868110273790485206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a3b38f5f28f2944918625bb6045d4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 89af22c50300c314cbe2670f698a9141, type: 2}
+  config: {fileID: 11400000, guid: 0e86b987a8f021b4c9aa7abedee12efb, type: 2}
 --- !u!114 &4879987410860729020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +82,18 @@ MonoBehaviour:
   ClimbingLayer:
     serializedVersion: 2
     m_Bits: 8192
+--- !u!114 &8270857680407380585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6868110273790485206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf82e176466210e4ba93d5212bb804b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &6868110273790485200
 SpriteRenderer:
   m_ObjectHideFlags: 0

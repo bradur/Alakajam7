@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetDetectionDistance: 18
   distanceForDropOffAfterTarget: 5
-  cargoPrefab: {fileID: 1852435908297238408, guid: d737a4c34e39ca04384d41a56ec7b97b,
+  cargoPrefab: {fileID: 8270857680407380585, guid: 210f66c0e7453af40b31b569b244fe5e,
     type: 3}

@@ -23,6 +23,6 @@ MonoBehaviour:
   direction: 1
   flipDirectionWhenCollidingWith:
     serializedVersion: 2
-    m_Bits: 327680
+    m_Bits: 458752
   climbDownStairs: 1
-  climbingSpeed: 10
+  climbingSpeed: 5
