@@ -11,11 +11,14 @@ public class HorizontalEntityMovement : MonoBehaviour
     private float velocityX;
 
     private bool shouldMove = false;
-    private bool canMove = false;
+    //private bool canMove = false;
+    private bool stopped = false;
 
     private HorizontalDirection currentDirection;
 
     private Climber climber;
+
+    private bool grounded = false;
 
     void Start()
     {
@@ -38,15 +41,39 @@ public class HorizontalEntityMovement : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        bool wasGrounded = grounded;
+        grounded = Physics2D.Linecast(
+            transform.position,
+            new Vector2(transform.position.x, transform.position.y - 0.1f),
+            config.OnlyMovesOnLayer
+        );
+        Debug.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - 0.1f), Color.red);
+        if (!wasGrounded && grounded)
+        {
+            Debug.Log("Grounded!");
+            StartMoving();
+        }
+        else if (wasGrounded && !grounded)
+        {
+            Debug.Log("Left the ground!");
+            StopMoving();
+        }
+    }
+
     void FixedUpdate()
     {
         if (config.ClimbDownStairs)
         {
             if (climber != null)
             {
-                if (climber.ClimbDown(config.ClimbingSpeed)) {
+                if (climber.ClimbDown(config.ClimbingSpeed))
+                {
                     shouldMove = false;
-                } else {
+                }
+                else
+                {
                     shouldMove = true;
                 }
             }
@@ -57,19 +84,20 @@ public class HorizontalEntityMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision2D)
+    void ReactToCollisionOrTriggerEnter(GameObject collisionGameObject)
     {
-        int collisionLayer = collision2D.collider.gameObject.layer;
-        if (Tools.IsInLayerMask(collisionLayer, config.StopAtLayer))
+        Debug.Log("Enter: " + collisionGameObject.name);
+        if (Tools.IsInLayerMask(collisionGameObject.layer, config.StopAtLayer))
         {
+            stopped = true;
             StopMoving();
         }
-        if (Tools.IsInLayerMask(collisionLayer, config.OnlyMovesOnLayer))
+        /*if (Tools.IsInLayerMask(collisionGameObject.layer, config.OnlyMovesOnLayer))
         {
             canMove = true;
             StartMoving();
-        }
-        if (Tools.IsInLayerMask(collisionLayer, config.FlipDirectionWhenCollidingWith))
+        }*/
+        if (Tools.IsInLayerMask(collisionGameObject.layer, config.FlipDirectionWhenCollidingWith))
         {
 
             if (currentDirection == HorizontalDirection.Left)
@@ -84,19 +112,43 @@ public class HorizontalEntityMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision2D)
+    void ReactToCollisionOrTriggerExit(GameObject collisionGameObject)
     {
-        int collisionLayer = collision2D.collider.gameObject.layer;
-        if (Tools.IsInLayerMask(collisionLayer, config.OnlyMovesOnLayer))
+        Debug.Log("Exit: " + collisionGameObject.name);
+        /*if (Tools.IsInLayerMask(collisionGameObject.layer, config.OnlyMovesOnLayer))
         {
             canMove = false;
             StopMoving();
+        }*/
+        if (Tools.IsInLayerMask(collisionGameObject.layer, config.StopAtLayer))
+        {
+            stopped = false;
+            StartMoving();
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider2D)
+    {
+        ReactToCollisionOrTriggerEnter(collider2D.gameObject);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision2D)
+    {
+        ReactToCollisionOrTriggerEnter(collision2D.collider.gameObject);
+    }
+
+    void OnTriggerExit2D(Collider2D collider2D)
+    {
+        ReactToCollisionOrTriggerExit(collider2D.gameObject);
+    }
+
+    void OnCollisionExit2D(Collision2D collision2D)
+    {
+        ReactToCollisionOrTriggerExit(collision2D.collider.gameObject);
     }
 
     public void StopMoving()
     {
-        shouldMove = false;
         rb2D.velocity = new Vector2(0f, rb2D.velocity.y);
     }
 
@@ -115,8 +167,11 @@ public class HorizontalEntityMovement : MonoBehaviour
         else
         {
             Debug.Log("No direction! Cannot move!");
+            return;
         }
-        if (shouldMove && canMove) {
+        Debug.Log("ShouldMove:" + shouldMove + " Grounded: " + grounded + " Stopped: " + stopped);
+        if (shouldMove && grounded && !stopped)
+        {
             rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
             Debug.Log("Starting movement!");
         }
