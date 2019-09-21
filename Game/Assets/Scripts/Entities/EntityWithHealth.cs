@@ -67,5 +67,15 @@ public class EntityWithHealth : MonoBehaviour
             updateHealthEvent = new UpdateHealthEvent();
         }
         updateHealthEvent.Invoke(currentHealth);
+
+        if(currentHealth <= 0)
+        {
+            Kill();
+        }
+    }
+
+    public void Kill()
+    {
+        Destroy(gameObject);
     }
 }

@@ -31,6 +31,13 @@ public class Projectile : MonoBehaviour
         if (config.HitSound) {
             // play
         }
+
+        EntityWithHealth e = collision2D.gameObject.GetComponent<EntityWithHealth>();
+        if(e != null)
+        {
+            e.LoseHealth(config.Damage);
+        }
+
         Kill();
     }
 }
