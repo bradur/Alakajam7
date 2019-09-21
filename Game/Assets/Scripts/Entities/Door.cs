@@ -9,6 +9,8 @@ public class Door : MonoBehaviour {
 
     private BoxCollider2D boxCollider2D;
     private EntityWithHealth entityHealth;
+    [SerializeField]
+    private SpriteRenderer doorSpriteRenderer;
 
     private void Start( ) {
         boxCollider2D = GetComponent<BoxCollider2D>();
@@ -17,13 +19,16 @@ public class Door : MonoBehaviour {
 
     private void BreakDown() {
         // play sound, show animation
+        doorSpriteRenderer.enabled = false;
         DisableCollider();
     }
+
 
     public void Repair(int amount) {
         entityHealth.AddHealth(amount);
         if (amount > 0 && boxCollider2D.enabled == false) {
             EnableCollider();
+            doorSpriteRenderer.enabled = true;
         }
     }
 

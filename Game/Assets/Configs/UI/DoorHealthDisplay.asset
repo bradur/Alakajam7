@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ecac10be5157647bee1dff8fa27e23, type: 3}
   m_Name: DoorHealthDisplay
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: a85147388816b2649b425617ea84bef0, type: 3}
+  icon: {fileID: 21300000, guid: b53bba3449cc7024c9955bc6334595af, type: 3}
   entityName: Door
