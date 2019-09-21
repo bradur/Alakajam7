@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6623038410366526312}
   - component: {fileID: 6623038410366526313}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6623038410732444019}
   - component: {fileID: 6623038410732444016}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6623038410929996222}
   - component: {fileID: 6623038410929996223}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6623038411757549520}
   - component: {fileID: 6623038411757549521}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: L_leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,9 +334,8 @@ GameObject:
   - component: {fileID: 6623038411875845692}
   - component: {fileID: 6623038411875845694}
   - component: {fileID: 6623038411875845665}
-  - component: {fileID: 1852435908297238408}
-  m_Layer: 12
-  m_Name: spooky
+  m_Layer: 14
+  m_Name: GroundSkeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -441,18 +440,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.04703152, y: -2.3358955}
   m_Size: {x: 3.4159496, y: 7.3022118}
   m_Direction: 0
---- !u!114 &1852435908297238408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6623038411875845666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf82e176466210e4ba93d5212bb804b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6623038411937947178
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6623038411937947179}
   - component: {fileID: 6623038411937947176}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,7 +530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6623038412006893283}
   - component: {fileID: 6623038412006893280}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: R_leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
