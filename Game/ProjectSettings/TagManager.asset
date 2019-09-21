@@ -19,8 +19,8 @@ TagManager:
   - Door
   - Player
   - ClimbingPlayer
-  - 
-  - 
+  - Mob
+  - FlyingMob
   - 
   - 
   - 

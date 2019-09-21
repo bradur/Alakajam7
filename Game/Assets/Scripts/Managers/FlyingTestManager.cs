@@ -33,7 +33,7 @@ public class FlyingTestManager : MonoBehaviour
                 parent = highPath;
             }
 
-            Flying f = Instantiate(flyingPrefab, parent.getSpawner().transform, true);
+            Flying f = Instantiate(flyingPrefab, parent.GetSpawner().transform, true);
             f.transform.localPosition = Vector3.zero;
             f.SetDropOffTarget(dropOffTarget);
         }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 240d5f25cf22f124e8d5858875d886c5, type: 3}
+  m_Name: BasicFlightMovement
+  m_EditorClassIdentifier: 
+  speed: 35
+  flapInterval: 0.66
+  flapSpeedDampen: 0.95
+  fallSpeed: -3
+  flapVelocity: 5
+  flapUntil: 2

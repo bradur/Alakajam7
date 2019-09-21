@@ -7,7 +7,7 @@ public class HorizontalEntityMovement : MonoBehaviour
     [SerializeField]
     private HorizontalMovementConfig config;
 
-    private Rigidbody2D rigidbody2D;
+    private Rigidbody2D rb2D;
     private float velocityX;
 
     private bool shouldMove = false;
@@ -15,7 +15,7 @@ public class HorizontalEntityMovement : MonoBehaviour
 
     void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rb2D = GetComponent<Rigidbody2D>();
         if (config == null) {
             Debug.Log("<color=red>Entity Movement has no config!</color>");
         }
@@ -27,7 +27,7 @@ public class HorizontalEntityMovement : MonoBehaviour
     void Update()
     {
         if (shouldMove && canMove) {
-            rigidbody2D.velocity = new Vector2(velocityX, rigidbody2D.velocity.y);
+            rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
         }
     }
 
@@ -38,7 +38,6 @@ public class HorizontalEntityMovement : MonoBehaviour
         }
         if (Tools.IsInLayerMask(collisionLayer, config.OnlyMovesOnLayer)) {
             canMove = true;
-            Debug.Log("Hit ground!");
             StartMoving();
         }
     }
@@ -52,9 +51,8 @@ public class HorizontalEntityMovement : MonoBehaviour
     }
 
     public void StopMoving() {
-        Debug.Log("Stopped moving!");
         shouldMove = false;
-        rigidbody2D.velocity = new Vector2(0f, rigidbody2D.velocity.y);
+        rb2D.velocity = new Vector2(0f, rb2D.velocity.y);
     }
 
     public void StartMoving() {
