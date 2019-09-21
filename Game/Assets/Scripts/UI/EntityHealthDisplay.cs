@@ -27,7 +27,9 @@ public class EntityHealthDisplay : MonoBehaviour
     private float healthBarMaxWidth;
 
     [SerializeField]
-    private EntityWithHealthConfig config;
+    private EntityWithHealthConfig healthConfig;
+    [SerializeField]
+    private EntityHealthDisplayConfig displayConfig;
 
 
     private void InitializeIfNotInitialized()
@@ -36,7 +38,8 @@ public class EntityHealthDisplay : MonoBehaviour
         {
             healthBatRectTransform = imgHealthBar.GetComponent<RectTransform>();
             healthBarMaxWidth = healthBatRectTransform.sizeDelta.x;
-            maxHealth = config.Health;
+            maxHealth = healthConfig.Health;
+            imgIcon.sprite = displayConfig.Icon;
         }
     }
 

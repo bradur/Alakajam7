@@ -12,8 +12,8 @@ public class EntityHealthDisplayConfig : ScriptableObject
 
     [SerializeField]
     [PreviewSprite]
-    private Sprite entityIcon;
-    public Sprite EntityIcon { get { return entityIcon; } }
+    private Sprite icon;
+    public Sprite Icon { get { return icon; } }
 
     [SerializeField]
     private string entityName;

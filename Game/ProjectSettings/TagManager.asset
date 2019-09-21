@@ -18,10 +18,10 @@ TagManager:
   - Spell
   - Door
   - Player
-  - ClimbingPlayer
+  - ClimbingEntity
   - Mob
   - FlyingMob
-  - 
+  - TowerWall
   - 
   - 
   - 

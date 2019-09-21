@@ -5,7 +5,7 @@ using UnityEngine;
 public class Climber : MonoBehaviour
 {
 
-    public Stairs stairs;
+    private Stairs stairs;
     Rigidbody2D rb;
 
     public bool Climbing {
@@ -19,13 +19,12 @@ public class Climber : MonoBehaviour
     private float gravityScale = 1.0f;
     private int layer;
 
-    public int ClimbingLayer;
+    public LayerMask ClimbingLayer;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        gravityScale = rb.gravityScale;
         layer = gameObject.layer;
     }
 
@@ -38,7 +37,7 @@ public class Climber : MonoBehaviour
     {
         if (grabbed)
         {
-            gameObject.layer = ClimbingLayer;
+            gameObject.layer = Tools.ToLayer(ClimbingLayer.value);
             rb.gravityScale = 0.0f;
         }
         else
@@ -65,7 +64,7 @@ public class Climber : MonoBehaviour
         }
     }
 
-    public void ClimbDown(float speed)
+    public bool ClimbDown(float speed)
     {
         if (stairs != null)
         {
@@ -73,8 +72,10 @@ public class Climber : MonoBehaviour
             {
                 grabbed = true;
                 ClimbTowards(stairs.Bottom, speed);
+                return true;
             }
         }
+        return false;
     }
 
     public void SetStairs(Stairs stairs)

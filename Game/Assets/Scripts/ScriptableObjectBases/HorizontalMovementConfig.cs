@@ -38,5 +38,17 @@ public class HorizontalMovementConfig : ScriptableObject
     private HorizontalDirection direction = HorizontalDirection.Left;
     public HorizontalDirection Direction { get { return direction; } }
 
+    [SerializeField]
+    private LayerMask flipDirectionWhenCollidingWith;
+    public LayerMask FlipDirectionWhenCollidingWith { get { return flipDirectionWhenCollidingWith; } }
+
+    [SerializeField]
+    private bool climbDownStairs = false;
+    public bool ClimbDownStairs { get { return climbDownStairs; } }
+
+    [SerializeField]
+    private float climbingSpeed = 10f;
+    public float ClimbingSpeed { get { return climbingSpeed; } }
+
 
 }

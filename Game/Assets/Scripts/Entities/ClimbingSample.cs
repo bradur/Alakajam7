@@ -43,7 +43,7 @@ public class ClimbingSample : MonoBehaviour
         {
             jump = false;
         }
-        Debug.Log(jump);
+
     }
 
     void FixedUpdate()
