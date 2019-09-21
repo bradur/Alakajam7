@@ -7,9 +7,10 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour
 {
-
-    [SerializeField]
     private ProjectileConfig config;
+    public void Instantiate(ProjectileConfig config) {
+        this.config = config;
+    }
 
     public void Shoot(Vector2 direction)
     {
@@ -18,11 +19,6 @@ public class Projectile : MonoBehaviour
         if (config.ShootSound) {
             // play
         }
-    }
-
-    void Update()
-    {
-
     }
 
     public void Kill()

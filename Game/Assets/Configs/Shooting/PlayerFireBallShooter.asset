@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5572fa8df5b282f4f84e7d3b97a5e2c3, type: 3}
+  m_Name: PlayerFireBallShooter
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5727598714915452188, guid: a6a8032f32f061146b88815711af78ff, type: 3}
+  projectileTiers:
+  - {fileID: 11400000, guid: 4ea7733ad8e26164298acef2a2e0990d, type: 2}
+  - {fileID: 11400000, guid: 5a1ca2f4a7c829049906a4c39ae5af70, type: 2}
+  - {fileID: 11400000, guid: 48e2444028b517e4b9efddfdcf128aa1, type: 2}

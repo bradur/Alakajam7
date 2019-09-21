@@ -20,6 +20,11 @@ public class ProjectileConfig : ScriptableObject
     public int Damage { get { return damage; } }
 
     [SerializeField]
+    private float cooldown = 0.5f;
+
+    public float Cooldown { get { return cooldown; } }
+
+    [SerializeField]
     private AudioClip shootSound;
     public AudioClip ShootSound { get { return shootSound; } }
 

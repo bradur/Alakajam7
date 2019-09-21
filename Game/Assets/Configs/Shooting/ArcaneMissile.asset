@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4acc0da7b2849549858440abbc543c8, type: 3}
-  m_Name: FireBall
+  m_Name: ArcaneMissile
   m_EditorClassIdentifier: 
-  speed: 10
-  damage: 5
+  speed: 25
+  damage: 1
+  cooldown: 0.5
   shootSound: {fileID: 0}
   hitSound: {fileID: 0}
