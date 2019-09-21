@@ -4,27 +4,76 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class UpdateCooldownPercentageEvent : UnityEvent<float>
+{
+
+}
 
 public class ProjectileShooter : MonoBehaviour
 {
 
     [SerializeField]
-    private Projectile projectilePrefab;
+    private ProjectileShooterConfig config;
+
+    [SerializeField]
+    public UpdateCooldownPercentageEvent updateCooldownPercentageEvent;
+
+    private ProjectileConfig projectileConfig;
+    private int tier = 0;
+    private int maxTier;
+
+    private float cooldownTimer = 0f;
+
+    private void Start() {
+        maxTier = config.MaxTier;
+        projectileConfig = config.GetProjectileConfig(tier);
+    }
 
     private Projectile GetProjectile()
     {
-        return Instantiate(projectilePrefab);
+        return Instantiate(config.Prefab);
+    }
+
+    public void IncreaseTier() {
+        tier += 1;
+        if (tier > maxTier) {
+            tier = maxTier;
+        }
     }
 
     public void Shoot(Vector2 direction)
     {
+        if (cooldownTimer > 0f) {
+            return;
+        }
         Projectile projectile = GetProjectile();
+        projectileConfig = config.GetProjectileConfig(tier);
+        projectile.Instantiate(projectileConfig);
         projectile.transform.SetParent(transform);
         projectile.transform.position = transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
         projectile.Shoot(direction);
+        UpdateCooldown(projectileConfig.Cooldown);
     }
 
+    public void UpdateCooldown(float currentCooldown)
+    {
+        cooldownTimer = currentCooldown;
+        if (cooldownTimer < 0f) {
+            cooldownTimer = 0f;
+        }
+        if (updateCooldownPercentageEvent != null) {
+            updateCooldownPercentageEvent.Invoke(cooldownTimer / projectileConfig.Cooldown);
+        }
+    }
+
+    void Update() {
+        cooldownTimer -= Time.deltaTime;
+        UpdateCooldown(cooldownTimer);
+    }
 
 }
