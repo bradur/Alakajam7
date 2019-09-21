@@ -11,7 +11,6 @@ public class HorizontalEntityMovement : MonoBehaviour
     private float velocityX;
 
     private bool shouldMove = false;
-    //private bool canMove = false;
     private bool stopped = false;
 
     private HorizontalDirection currentDirection;
@@ -52,12 +51,10 @@ public class HorizontalEntityMovement : MonoBehaviour
         Debug.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - 0.1f), Color.red);
         if (!wasGrounded && grounded)
         {
-            Debug.Log("Grounded!");
             StartMoving();
         }
         else if (wasGrounded && !grounded)
         {
-            Debug.Log("Left the ground!");
             StopMoving();
         }
     }
@@ -86,17 +83,12 @@ public class HorizontalEntityMovement : MonoBehaviour
 
     void ReactToCollisionOrTriggerEnter(GameObject collisionGameObject)
     {
-        Debug.Log("Enter: " + collisionGameObject.name);
+
         if (Tools.IsInLayerMask(collisionGameObject.layer, config.StopAtLayer))
         {
             stopped = true;
             StopMoving();
         }
-        /*if (Tools.IsInLayerMask(collisionGameObject.layer, config.OnlyMovesOnLayer))
-        {
-            canMove = true;
-            StartMoving();
-        }*/
         if (Tools.IsInLayerMask(collisionGameObject.layer, config.FlipDirectionWhenCollidingWith))
         {
 
@@ -114,12 +106,6 @@ public class HorizontalEntityMovement : MonoBehaviour
 
     void ReactToCollisionOrTriggerExit(GameObject collisionGameObject)
     {
-        Debug.Log("Exit: " + collisionGameObject.name);
-        /*if (Tools.IsInLayerMask(collisionGameObject.layer, config.OnlyMovesOnLayer))
-        {
-            canMove = false;
-            StopMoving();
-        }*/
         if (Tools.IsInLayerMask(collisionGameObject.layer, config.StopAtLayer))
         {
             stopped = false;
@@ -173,7 +159,6 @@ public class HorizontalEntityMovement : MonoBehaviour
         if (shouldMove && grounded && !stopped)
         {
             rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
-            //Debug.Log("Starting movement!");
         }
     }
 }
