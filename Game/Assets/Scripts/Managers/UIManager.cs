@@ -8,6 +8,8 @@ using System.Collections;
 public class UIManager : MonoBehaviour {
 
     public static UIManager main;
+    [SerializeField]
+    private GameObject waveWarning;
 
     private void Awake() {
         main = this;
@@ -17,5 +19,9 @@ public class UIManager : MonoBehaviour {
     
     }
 
+    public void ToggleWarning(bool show)
+    {
+        waveWarning.SetActive(show);
+    }
     
 }
