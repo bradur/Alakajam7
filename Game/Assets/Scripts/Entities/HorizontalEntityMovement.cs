@@ -114,11 +114,11 @@ public class HorizontalEntityMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("No direction! Cannot move!");
+            //Debug.Log("No direction! Cannot move!");
         }
         if (shouldMove && canMove) {
             rb2D.velocity = new Vector2(velocityX, rb2D.velocity.y);
-            Debug.Log("Starting movement!");
+            //Debug.Log("Starting movement!");
         }
     }
 }
