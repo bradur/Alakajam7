@@ -9,8 +9,14 @@ public class ClimbingSample : MonoBehaviour
     Rigidbody2D rb;
 
     Vector2 dir = Vector2.zero;
+    bool jump;
 
-    float speed = 10.0f;
+    public float MoveSpeed = 20.0f;
+    public float ClimbSpeed = 10.0f;
+    public float JumpSpeed = 10.0f;
+
+    private float jumpTimer = 0.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,28 +29,66 @@ public class ClimbingSample : MonoBehaviour
     void Update()
     {
         dir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (Input.GetButtonDown("Jump"))
+        {
+            jump = true;
+            jumpTimer = Time.time + 0.1f;
+        }
+
+        if (jumpTimer < Time.time)
+        {
+            jump = false;
+        }
     }
 
     void FixedUpdate()
     {
-        if (Mathf.Abs(dir.x) > 0.001 && !climber.Climbing)
+        if (climber.Climbing)
         {
-            rb.velocity = new Vector2(dir.x * speed, 0f);
+            if (dir.x > 0.1f)
+            {
+                climber.ClimbDown(ClimbSpeed);
+            }
+            if (dir.x < -0.1f)
+            {
+                climber.ClimbUp(ClimbSpeed);
+            }
+        }
+        else
+        {
+            if (Mathf.Abs(dir.x) > 0.1f)
+            {
+                rb.velocity = new Vector2(dir.x * MoveSpeed, rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
         }
 
+        if (dir.y > 0.1f)
+        {
+            climber.ClimbUp(ClimbSpeed);
+        }
+        if (dir.y < -0.1f)
+        {
+            climber.ClimbDown(ClimbSpeed);
+        }
 
-        if (dir.y > 0.001)
+        if (jump)
         {
-            climber.ClimbUp(speed);
+            if (climber.Climbing || IsGrounded())
+            {
+                Debug.Log("JUMP!");
+                rb.AddForce(new Vector2(0, JumpSpeed));
+                climber.Release();
+                jump = false;
+            }
         }
-        if (dir.y < -0.001)
-        {
-            climber.ClimbDown(speed);
-        }
+    }
 
-        if (dir.magnitude < 0.1f)
-        {
-            rb.velocity = Vector2.zero;
-        }
+    private bool IsGrounded()
+    {
+        return true;
     }
 }

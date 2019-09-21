@@ -11,33 +11,53 @@ public class Climber : MonoBehaviour
     public bool Climbing {
         get
         {
-            return IsClimbing();
+            return grabbed && IsReadyToClimb();
         }
     }
 
-    private bool wasClimbing;
+    private bool grabbed;
+    private float gravityScale = 1.0f;
+    private int layer;
 
+    public int ClimbingLayer;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        gravityScale = rb.gravityScale;
+        layer = gameObject.layer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Climbing);
     }
 
     void FixedUpdate()
     {
+        if (grabbed)
+        {
+            gameObject.layer = ClimbingLayer;
+            rb.gravityScale = 0.0f;
+        }
+        else
+        {
+            gameObject.layer = layer;
+            rb.gravityScale = gravityScale;
+        }
+
+        if (!IsReadyToClimb())
+        {
+            grabbed = false;
+        }
     }
 
     public void ClimbUp(float speed)
     {
         if (stairs != null)
         {
+            grabbed = true;
             ClimbTowards(stairs.Top, speed);
         }
     }
@@ -46,6 +66,7 @@ public class Climber : MonoBehaviour
     {
         if (stairs != null)
         {
+            grabbed = true;
             ClimbTowards(stairs.Bottom, speed);
         }
     }
@@ -61,6 +82,11 @@ public class Climber : MonoBehaviour
         {
             this.stairs = null;
         }
+    }
+
+    public void Release()
+    {
+        grabbed = false;
     }
 
     private void ClimbTowards(Vector2 target, float speed)
@@ -101,7 +127,7 @@ public class Climber : MonoBehaviour
 
     }
 
-    private bool IsClimbing()
+    private bool IsReadyToClimb()
     {
         if (stairs == null) return false;
         var diffTop = stairs.Top.y - transform.position.y;
