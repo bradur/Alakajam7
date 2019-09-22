@@ -46,6 +46,6 @@ public class Door : MonoBehaviour {
 
 
     private void EnableCollider() {
-        boxCollider2D.enabled = false;
+        boxCollider2D.enabled = true;
     }
 }
