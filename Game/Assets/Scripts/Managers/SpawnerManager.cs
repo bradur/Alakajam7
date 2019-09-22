@@ -49,7 +49,7 @@ public class SpawnerManager : MonoBehaviour
 
     }
 
-
+    private bool everythingStopped = false;
     void StartWave()
     {
         currentWaveData = gameData.Waves[currentWave];
@@ -78,7 +78,8 @@ public class SpawnerManager : MonoBehaviour
 
     void EndWave()
     {
-        if (!waveEnded) {
+        if (!waveEnded)
+        {
             UIManager.main.ShowShop();
             waveEnded = true;
         }
@@ -92,66 +93,68 @@ public class SpawnerManager : MonoBehaviour
 
     void GameEnd()
     {
-        if (!gameEnded) {
+        if (!gameEnded)
+        {
             gameEnded = true;
             UIManager.main.ToggleWaveStartTimer(false);
             UIManager.main.ShowTheEnd();
         }
     }
 
-    public void StopEverything() {
-        waveOngoing = false;
-        groupOngoing = false;
-        groupStarted = false;
-        currentWave = 1000;
+    public void StopEverything()
+    {
+        everythingStopped = true;
     }
 
     void FixedUpdate()
     {
-        if (!waveOngoing)
+        if (!everythingStopped)
         {
-            currentWave++;
-            if (currentWave >= gameData.Waves.Count)
+            if (!waveOngoing)
             {
-                GameEnd();
-            }
-            else
-            {
-                StartWave();
-            }
-        }
-        else
-        {
-            if (!groupOngoing)
-            {
-                currentGroup++;
-                if (currentGroup >= currentWaveData.Groups.Count)
+                currentWave++;
+                if (currentWave >= gameData.Waves.Count)
                 {
-                    // if there are enemies left, do not proceed to the next wave
-                    if (activeEnemies.Count == 0)
-                    {
-                        EndWave();
-                    }
+                    GameEnd();
                 }
                 else
                 {
-                    StartGroup();
+                    StartWave();
                 }
             }
-            else if (!groupStarted)
+            else
             {
-                if (Time.fixedTime - timeGroupStarted > currentGroupData.startDelay)
+                if (!groupOngoing)
                 {
-                    UIManager.main.ToggleWarning(false);
-                    UIManager.main.ToggleWaveStartTimer(false);
+                    currentGroup++;
+                    if (currentGroup >= currentWaveData.Groups.Count)
+                    {
+                        // if there are enemies left, do not proceed to the next wave
+                        if (activeEnemies.Count == 0)
+                        {
+                            EndWave();
+                        }
+                    }
+                    else
+                    {
+                        StartGroup();
+                    }
+                }
+                else if (!groupStarted)
+                {
+                    if (Time.fixedTime - timeGroupStarted > currentGroupData.startDelay)
+                    {
+                        UIManager.main.ToggleWarning(false);
+                        UIManager.main.ToggleWaveStartTimer(false);
 
-                    groupStarted = true;
-                    StartCoroutine(SpawnGroup());
+                        groupStarted = true;
+                        StartCoroutine(SpawnGroup());
+                    }
                 }
             }
-        }
 
-        activeEnemies = activeEnemies.Where(x => x != null).ToList();
+            activeEnemies = activeEnemies.Where(x => x != null).ToList();
+        }
     }
 
     // Coroutine that spawns a group
