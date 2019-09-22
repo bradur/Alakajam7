@@ -51,4 +51,8 @@ public class ProjectileConfig : ScriptableObject
     [SerializeField]
     private bool shouldBounce = true;
     public bool ShouldBounce { get { return shouldBounce; } }
+
+    [SerializeField]
+    private LayerMask hitLayerMask;
+    public LayerMask HitLayerMask { get { return hitLayerMask; } }
 }
