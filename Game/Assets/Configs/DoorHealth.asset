@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 25
   destroyWhenHealthZero: 0
+  deathEffect: {fileID: 4371736750080723462, guid: c9cd3f4bd6c206d41819c7151aa574e0,
+    type: 3}
