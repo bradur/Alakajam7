@@ -31,12 +31,10 @@ public class UIManager : MonoBehaviour {
     }
 
     public void ShowShop() {
-        Debug.Log("Show!");
         animator.SetTrigger("showShop");
     }
 
     public void HideShop() {
-        Debug.Log("Hide!!");
         animator.SetTrigger("hideShop");
     }
     

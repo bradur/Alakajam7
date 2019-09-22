@@ -19,10 +19,8 @@ MonoBehaviour:
     enemies:
     - type: 0
       spawn: 0
-  - startDelay: 5
+  - startDelay: 10
     interval: 0.5
     enemies:
-    - type: 0
-      spawn: 0
-    - type: 0
-      spawn: 0
+    - type: 1
+      spawn: 1

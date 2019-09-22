@@ -38,7 +38,8 @@ public class Group
 public enum EnemyType
 {
     Walking,
-    Flying
+    Flying,
+    Shield
 }
 
 public enum SpawnPoint
