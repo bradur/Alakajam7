@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: BatEnemyHealth
   m_EditorClassIdentifier: 
   health: 3
+  destroyWhenHealthZero: 1
+  deathEffect: {fileID: 4371736750080723462, guid: 097fca538e889ef448a3d1ec75d4ef49,
+    type: 3}
