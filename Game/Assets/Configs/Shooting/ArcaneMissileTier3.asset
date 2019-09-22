@@ -18,3 +18,4 @@ MonoBehaviour:
   cooldown: 0.1
   shootSound: {fileID: 0}
   hitSound: {fileID: 0}
+  cost: 15

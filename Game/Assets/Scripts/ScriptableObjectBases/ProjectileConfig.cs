@@ -35,4 +35,8 @@ public class ProjectileConfig : ScriptableObject
     [SerializeField]
     private AudioClip hitSound;
     public AudioClip HitSound { get { return hitSound; } }
+
+    [SerializeField]
+    private int cost;
+    public int Cost { get { return cost; } }
 }

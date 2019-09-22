@@ -25,10 +25,14 @@ public class Door : MonoBehaviour {
 
 
     public void Repair(int amount) {
-        entityHealth.AddHealth(amount);
-        if (amount > 0 && boxCollider2D.enabled == false) {
-            EnableCollider();
-            doorSpriteRenderer.enabled = true;
+        Debug.Log("Attempt to repair: " +amount);
+        if (InventoryManager.main.UseMana(amount)) {
+            Debug.Log("Succesful! repair! " +amount);
+            entityHealth.AddHealth(amount);
+            if (amount > 0 && boxCollider2D.enabled == false) {
+                EnableCollider();
+                doorSpriteRenderer.enabled = true;
+            }
         }
     }
 
