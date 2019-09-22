@@ -77,6 +77,11 @@ public class EntityWithHealth : MonoBehaviour
 
     public void Kill()
     {
+        Flying flying = GetComponent<Flying>();
+        if(flying != null)
+        {
+            flying.ForceDrop();
+        }
         if (config.DestroyWhenHealthZero) {
             Destroy(gameObject);
         }

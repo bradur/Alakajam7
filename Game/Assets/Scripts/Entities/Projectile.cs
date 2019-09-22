@@ -43,4 +43,12 @@ public class Projectile : MonoBehaviour
 
         Kill();
     }
+
+    private void Update()
+    {
+        if (Vector3.Distance(transform.position, Vector3.zero) > 200)
+        {
+            Kill();
+        }
+    }
 }

@@ -28,6 +28,9 @@ public class ProjectileShooter : MonoBehaviour
     [SerializeField]
     public UpdateCooldownPercentageEvent updateCooldownPercentageEvent;
 
+    [SerializeField]
+    private Transform projectileContainer;
+
     private ProjectileConfig projectileConfig;
     private int tier = 0;
     private int maxTier;
@@ -66,7 +69,12 @@ public class ProjectileShooter : MonoBehaviour
         Projectile projectile = GetProjectile();
         projectileConfig = config.GetProjectileConfig(tier);
         projectile.Instantiate(projectileConfig);
-        projectile.transform.SetParent(transform);
+
+        if(projectileContainer != null)
+        {
+            projectile.transform.SetParent(projectileContainer);
+        }
+
         projectile.transform.position = transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
