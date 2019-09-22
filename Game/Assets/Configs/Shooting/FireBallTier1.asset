@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4acc0da7b2849549858440abbc543c8, type: 3}
   m_Name: FireBallTier1
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
   damage: 5
   explosionRadius: 0
   cooldown: 2
@@ -22,3 +22,4 @@ MonoBehaviour:
   hitEffect: {fileID: 4371736750080723462, guid: 8aad2d1715ddefc4f94bfe50625847bd,
     type: 3}
   destroyDelay: 1
+  shouldBounce: 1

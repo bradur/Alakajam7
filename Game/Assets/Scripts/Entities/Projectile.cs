@@ -90,7 +90,7 @@ public class Projectile : MonoBehaviour
         {
             bool entityDied = e.LoseHealth(config.Damage);
             if (entityDied) {
-                //InventoryManager.main.GainMana(1);
+                InventoryManager.main.GainMana(1);
             }
         }
         

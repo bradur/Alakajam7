@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6decb54d1d147044687ba92bc6088fba, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  mana: 5
-  startingMana: 20
+  mana: 0
+  startingMana: 0

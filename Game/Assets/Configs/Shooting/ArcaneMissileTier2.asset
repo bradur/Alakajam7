@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4acc0da7b2849549858440abbc543c8, type: 3}
   m_Name: ArcaneMissileTier2
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 10
   damage: 2
   explosionRadius: 0
   cooldown: 0.3
   shootSound: {fileID: 8300000, guid: 686f14c5da9a44949873d5bcaf6478da, type: 3}
-  hitSound: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: fdd9b8d9d4a1db944b1212eab3486c3d, type: 3}
   cost: 10
   hitEffect: {fileID: 4371736750080723462, guid: cf3c1859377f95a4fbf628e65742ab25,
     type: 3}
   destroyDelay: 1
+  shouldBounce: 1

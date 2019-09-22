@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4acc0da7b2849549858440abbc543c8, type: 3}
   m_Name: FireBallTier2
   m_EditorClassIdentifier: 
-  speed: 11
-  damage: 10
+  speed: 10
+  damage: 5
   explosionRadius: 0
-  cooldown: 1
+  cooldown: 1.5
   shootSound: {fileID: 8300000, guid: 7f108c3000eb61c4bb5c402fb40a86e3, type: 3}
   hitSound: {fileID: 8300000, guid: cd8dbf16c026ea04db15f7ba722de3a8, type: 3}
   cost: 15
