@@ -10,32 +10,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fb4afaf9f9f54b42aba730cfa8f274e, type: 3}
-  m_Name: Wave3
+  m_Name: Wave5
   m_EditorClassIdentifier: 
   duration: 30
   groups:
   - startDelay: 5
-    interval: 2
-    enemies:
-    - type: 2
-      spawn: 0
-    - type: 0
-      spawn: 0
-  - startDelay: 8
-    interval: 1
-    enemies:
-    - type: 2
-      spawn: 0
-    - type: 0
-      spawn: 0
-    - type: 0
-      spawn: 0
-  - startDelay: 10
     interval: 0.5
     enemies:
     - type: 1
       spawn: 1
     - type: 1
-      spawn: 1
+      spawn: 2
+    - type: 2
+      spawn: 0
     - type: 1
       spawn: 1
+    - type: 1
+      spawn: 2
+    - type: 2
+      spawn: 0
+    - type: 1
+      spawn: 1
+    - type: 1
+      spawn: 2
+    - type: 2
+      spawn: 0
+  - startDelay: 5
+    interval: 2
+    enemies:
+    - type: 2
+      spawn: 0
+    - type: 2
+      spawn: 0
+    - type: 0
+      spawn: 0
+    - type: 0
+      spawn: 0
+    - type: 2
+      spawn: 0
+    - type: 2
+      spawn: 0
+    - type: 0
+      spawn: 0
+    - type: 0
+      spawn: 0
+    - type: 2
+      spawn: 0
+    - type: 0
+      spawn: 0
