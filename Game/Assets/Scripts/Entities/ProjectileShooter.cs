@@ -24,6 +24,7 @@ public class ProjectileShooter : MonoBehaviour
 
     [SerializeField]
     private ProjectileShooterConfig config;
+    public ProjectileShooterConfig Config { get { return config; } }
 
     [SerializeField]
     public UpdateCooldownPercentageEvent updateCooldownPercentageEvent;
@@ -38,11 +39,13 @@ public class ProjectileShooter : MonoBehaviour
     private float cooldownTimer = 0f;
     public UpdateSpellTier updateSpellTier;
 
-    public void UpdateSpellTier(int tier) {
+    public void UpdateSpellTier(int tier)
+    {
         updateSpellTier.Invoke(tier);
     }
 
-    private void Start() {
+    private void Start()
+    {
         maxTier = config.MaxTier;
         projectileConfig = config.GetProjectileConfig(tier);
         updateSpellTier.Invoke(tier);
@@ -53,9 +56,11 @@ public class ProjectileShooter : MonoBehaviour
         return Instantiate(config.Prefab);
     }
 
-    public void IncreaseTier() {
+    public void IncreaseTier()
+    {
         tier += 1;
-        if (tier > maxTier) {
+        if (tier > maxTier)
+        {
             tier = maxTier;
         }
         updateSpellTier.Invoke(tier);
@@ -63,14 +68,15 @@ public class ProjectileShooter : MonoBehaviour
 
     public void Shoot(Vector2 direction)
     {
-        if (cooldownTimer > 0f) {
+        if (cooldownTimer > 0f)
+        {
             return;
         }
         Projectile projectile = GetProjectile();
         projectileConfig = config.GetProjectileConfig(tier);
         projectile.Instantiate(projectileConfig);
 
-        if(projectileContainer != null)
+        if (projectileContainer != null)
         {
             projectile.transform.SetParent(projectileContainer);
         }
@@ -85,19 +91,23 @@ public class ProjectileShooter : MonoBehaviour
     public void UpdateCooldown(float currentCooldown)
     {
         cooldownTimer = currentCooldown;
-        if (cooldownTimer < 0f) {
+        if (cooldownTimer < 0f)
+        {
             cooldownTimer = 0f;
         }
-        if (updateCooldownPercentageEvent != null) {
+        if (updateCooldownPercentageEvent != null)
+        {
             updateCooldownPercentageEvent.Invoke(cooldownTimer / projectileConfig.Cooldown);
         }
     }
 
-    public bool KeyIsPressed() {
+    public bool KeyIsPressed()
+    {
         return config.KeyIsPressed();
     }
 
-    void Update() {
+    void Update()
+    {
         cooldownTimer -= Time.deltaTime;
         UpdateCooldown(cooldownTimer);
     }

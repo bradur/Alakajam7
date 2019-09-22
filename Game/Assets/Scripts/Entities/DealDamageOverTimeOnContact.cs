@@ -71,7 +71,7 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
             if (targetEntity != null) {
                 isInContact = true;
                 StartDealingDamage(targetEntity);
-                Debug.Log("<color=green>In contact with " + collision2D.gameObject.name + "</color>");
+                //Debug.Log("<color=green>In contact with " + collision2D.gameObject.name + "</color>");
             }
         }
     }
@@ -80,7 +80,7 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
     {
         EntityWithHealth targetEntity = collision2D.gameObject.GetComponent<EntityWithHealth>();
         if (targetEntity != null && targetEntity == target) {
-            Debug.Log("<color=yellow>Losing contact with " + collision2D.gameObject.name + "!</color>");
+            //Debug.Log("<color=yellow>Losing contact with " + collision2D.gameObject.name + "!</color>");
             isInContact = false;
             target = null;
         }
