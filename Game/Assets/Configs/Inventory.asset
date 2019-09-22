@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6decb54d1d147044687ba92bc6088fba, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  fireBallTier: 0
-  arcaneMissileTier: 0
-  mana: 11
-  startingMana: 10
+  mana: 5
+  startingMana: 20
