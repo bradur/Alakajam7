@@ -20,6 +20,11 @@ public class UIManager : MonoBehaviour
     private bool shopIsOpen = false;
 
     private bool gameOver = false;
+    private bool endGamePrompt = false;
+    private bool menuShown = false;
+    
+    [SerializeField]
+    private GameObject menuScreen;
 
     [SerializeField]
     private SpawnerManager spawner;
@@ -36,6 +41,18 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        if (endGamePrompt || menuShown) {
+            # if UNITY_STANDALONE || UNITY_EDITOR
+            if (Input.GetKeyDown(KeyCode.Q)) {
+                Application.Quit();
+            }
+            # endif
+        }
+        # if UNITY_STANDALONE || UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            ToggleMenu();
+        }
+        # endif
 
     }
 
@@ -51,6 +68,19 @@ public class UIManager : MonoBehaviour
         waveTimer.SetActive(show);
     }
 
+    public void ShowTheEnd()
+    {
+        animator.SetTrigger("showTheEnd");
+        shopIsOpen = true;
+        endGamePrompt = true;
+    }
+
+    public void ToggleMenu()
+    {
+        menuShown = !menuShown;
+        menuScreen.SetActive(menuShown);
+        shopIsOpen = menuShown;
+    }
 
     public void ShowShop()
     {

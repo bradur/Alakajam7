@@ -40,6 +40,8 @@ public class SpawnerManager : MonoBehaviour
     private WaveData currentWaveData = null;
     private Group currentGroupData = null;
 
+    private bool gameEnded = false;
+
     private List<GameObject> activeEnemies = new List<GameObject>();
 
     void Start()
@@ -90,7 +92,11 @@ public class SpawnerManager : MonoBehaviour
 
     void GameEnd()
     {
-
+        if (!gameEnded) {
+            gameEnded = true;
+            UIManager.main.ToggleWaveStartTimer(false);
+            UIManager.main.ShowTheEnd();
+        }
     }
 
     public void StopEverything() {
