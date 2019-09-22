@@ -164,7 +164,7 @@ Rigidbody2D:
   m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.2
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_Interpolate: 2
   m_SleepingMode: 1
@@ -273,6 +273,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5727598714915452162}
     m_Modifications:
+    - target: {fileID: 4371736750080723462, guid: 0d1c51bde42114b48a7bde379a85aae4,
+        type: 3}
+      propertyPath: m_Name
+      value: Fireball
+      objectReference: {fileID: 0}
     - target: {fileID: 778726773409072019, guid: 0d1c51bde42114b48a7bde379a85aae4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -327,11 +332,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4371736750080723462, guid: 0d1c51bde42114b48a7bde379a85aae4,
-        type: 3}
-      propertyPath: m_Name
-      value: Fireball
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d1c51bde42114b48a7bde379a85aae4, type: 3}
