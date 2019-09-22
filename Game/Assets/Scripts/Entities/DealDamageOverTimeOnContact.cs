@@ -56,6 +56,7 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
         if (anim != null)
         {
             anim.Play("Smash", -1, 0);
+            anim.SetBool("Smashing", true);
         }
     }
 
@@ -69,15 +70,14 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
             AudioClip randomSound = hitSoundConfig.Sounds[Mathf.RoundToInt(Random.Range(0, hitSoundConfig.Sounds.Count - 1))];
             hitSource.PlayOneShot(randomSound);
         }
-        ResetDamageInterval();
+        if (target != null)
+        {
+            ResetDamageInterval();
+        }
     }
 
     private void StopDealingDamage () {
         target = null;
-        if (anim != null)
-        {
-            anim.Play("Walk", -1, 0);
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision2D)
@@ -100,7 +100,11 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
             //Debug.Log("<color=yellow>Losing contact with " + collision2D.gameObject.name + "!</color>");
             isInContact = false;
             target = null;
-            anim.SetBool("Smashing", false);
+            if (anim != null)
+            {
+                anim.Play("Walk", -1, 0);
+                anim.SetBool("Smashing", false);
+            }
         }
     }
 }

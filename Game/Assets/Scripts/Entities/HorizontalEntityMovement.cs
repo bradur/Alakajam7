@@ -57,6 +57,15 @@ public class HorizontalEntityMovement : MonoBehaviour
         {
             StopMoving();
         }
+
+        if (rb2D.velocity.x > 0 && transform.localScale.x > 0)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
+        if (rb2D.velocity.x < 0 && transform.localScale.x < 0)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
     }
 
     void FixedUpdate()
@@ -68,7 +77,7 @@ public class HorizontalEntityMovement : MonoBehaviour
                 if (climber.ClimbDown(config.ClimbingSpeed))
                 {
                     shouldMove = false;
-                    transform.eulerAngles = new Vector2(0f, -180f);
+                    //transform.eulerAngles = new Vector2(0f, -180f);
                 }
                 else
                 {
@@ -149,13 +158,13 @@ public class HorizontalEntityMovement : MonoBehaviour
         {
             velocityX = -config.Speed;
             shouldMove = true;
-            transform.eulerAngles = new Vector2(0f, 0);
+            //transform.eulerAngles = new Vector2(0f, 0);
         }
         else if (currentDirection == HorizontalDirection.Right)
         {
             velocityX = config.Speed;
             shouldMove = true;
-            transform.eulerAngles = new Vector2(0f, -180f);
+            //transform.eulerAngles = new Vector2(0f, -180f);
         }
         else
         {
