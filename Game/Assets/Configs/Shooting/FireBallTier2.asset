@@ -22,4 +22,7 @@ MonoBehaviour:
   hitEffect: {fileID: 4371736750080723462, guid: 8aad2d1715ddefc4f94bfe50625847bd,
     type: 3}
   destroyDelay: 1
-  shouldBounce: 1
+  shouldBounce: 0
+  hitLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
