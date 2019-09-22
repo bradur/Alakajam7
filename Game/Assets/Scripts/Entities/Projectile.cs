@@ -98,8 +98,16 @@ public class Projectile : MonoBehaviour
         if(e != null)
         {
             bool entityDied = e.LoseHealth(config.Damage);
-            if (entityDied) {
-                InventoryManager.main.GainMana(1);
+            if (entityDied)
+            {
+                if (e.gameObject.tag == "Badman")
+                {
+                    InventoryManager.main.GainMana(4);
+                }
+                else
+                {
+                    InventoryManager.main.GainMana(2);
+                }
             }
         }
         

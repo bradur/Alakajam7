@@ -25,7 +25,7 @@ public class FlyingTestManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        /*if(Input.GetKeyDown(KeyCode.Space))
         {
             FlightSpawner parent = lowPath;
             if (Input.GetKey(KeyCode.UpArrow))
@@ -36,6 +36,6 @@ public class FlyingTestManager : MonoBehaviour
             Flying f = Instantiate(flyingPrefab, parent.GetSpawner().transform, true);
             f.transform.localPosition = Vector3.zero;
             f.SetDropOffTarget(dropOffTarget);
-        }
+        }*/
     }
 }

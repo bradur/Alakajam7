@@ -23,14 +23,20 @@ public class AreaOfEffect : MonoBehaviour
 
         foreach (Collider2D collider in hits)
         {
-            Debug.Log("pöl");
             EntityWithHealth e = collider.gameObject.GetComponent<EntityWithHealth>();
             if (e != null)
             {
                 bool entityDied = e.LoseHealth(damage);
                 if (entityDied)
                 {
-                    InventoryManager.main.GainMana(1);
+                    if (e.gameObject.tag == "Badman")
+                    {
+                        InventoryManager.main.GainMana(4);
+                    }
+                    else
+                    {
+                        InventoryManager.main.GainMana(2);
+                    }
                 }
             }
         }
@@ -40,21 +46,6 @@ public class AreaOfEffect : MonoBehaviour
     public Collider2D GetCollider()
     {
         return col;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        EntityWithHealth e = collision.gameObject.GetComponent<EntityWithHealth>();
-        if (e != null)
-        {
-            bool entityDied = e.LoseHealth(damage);
-            if (entityDied)
-            {
-                InventoryManager.main.GainMana(1);
-            }
-        }
-
-        Destroy(gameObject);
     }
 
     public void SetStuff(float radius, int damage, int layerMask)
