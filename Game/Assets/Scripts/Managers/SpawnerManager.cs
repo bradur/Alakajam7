@@ -31,6 +31,8 @@ public class SpawnerManager : MonoBehaviour
     private float timeGroupStarted = 0;
     private bool groupStarted = false;
 
+    private bool waveEnded = false;
+
     private WaveData currentWaveData = null;
     private Group currentGroupData = null;
 
@@ -47,6 +49,7 @@ public class SpawnerManager : MonoBehaviour
         currentWaveData = gameData.Waves[currentWave];
 
         waveOngoing = true;
+        waveEnded = false;
         groupOngoing = false;
         groupStarted = false;
 
@@ -66,8 +69,9 @@ public class SpawnerManager : MonoBehaviour
 
     void EndWave()
     {
-        if (waveOngoing) {
+        if (!waveEnded) {
             UIManager.main.ShowShop();
+            waveEnded = true;
         }
     }
 
@@ -124,13 +128,7 @@ public class SpawnerManager : MonoBehaviour
                 }
             }
         }
-        /*for (int index = activeEnemies.Count; index > 0; index -= 1)
-        {
-            if (activeEnemies[index] == null)
-            {
-                activeEnemies.Remove(activeEnemies[index]);
-            }
-        }*/
+
         activeEnemies = activeEnemies.Where(x => x != null).ToList();
     }
 
