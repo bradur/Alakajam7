@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   damage: 5
-  explosionRadius: 0
+  explosionRadius: 3
   cooldown: 2
   shootSound: {fileID: 8300000, guid: 456f3db034e245645b32deaacddc9384, type: 3}
   hitSound: {fileID: 8300000, guid: 6f349630f57142648b42403b8d69e348, type: 3}
@@ -25,4 +25,4 @@ MonoBehaviour:
   shouldBounce: 0
   hitLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 57344

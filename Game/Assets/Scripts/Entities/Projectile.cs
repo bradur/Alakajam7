@@ -65,6 +65,7 @@ public class Projectile : MonoBehaviour
             if(areaOfEffect != null)
             {
                 areaOfEffect.transform.parent = null;
+                areaOfEffect.SetStuff(config.ExplosionRadius, config.Damage, config.HitLayerMask.value);
                 areaOfEffect.gameObject.SetActive(true);
             }
         }
