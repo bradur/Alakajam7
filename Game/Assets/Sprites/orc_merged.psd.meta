@@ -11,6 +11,18 @@ TextureImporter:
   - first:
       213: -2042589304690800864
     second: orc_merged_2
+  - first:
+      213: -5799984415467551075
+    second: orc_merged_3
+  - first:
+      213: 1820457360179033352
+    second: orc_merged_4
+  - first:
+      213: -8026156070440468441
+    second: orc_merged_5
+  - first:
+      213: -1624369593784095248
+    second: orc_merged_6
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -110,8 +122,8 @@ TextureImporter:
       name: orc_merged_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 155
+        x: 192
+        y: 1826
         width: 850
         height: 1400
       alignment: 9
@@ -131,8 +143,8 @@ TextureImporter:
       name: orc_merged_1
       rect:
         serializedVersion: 2
-        x: 862
-        y: 121
+        x: 1008
+        y: 1780
         width: 921
         height: 1409
       alignment: 9
@@ -152,8 +164,8 @@ TextureImporter:
       name: orc_merged_2
       rect:
         serializedVersion: 2
-        x: 1796
-        y: 98
+        x: 1941
+        y: 1776
         width: 850
         height: 1400
       alignment: 9
@@ -165,6 +177,90 @@ TextureImporter:
       bones: []
       spriteID: e082e7af85b533f46b9fcc96730a76d0
       internalID: -2042589304690800864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: orc_merged_3
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 262
+        width: 940
+        height: 1324
+      alignment: 9
+      pivot: {x: 0.41633672, y: 0.064537294}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbf868868db511846898a497c2b1b3b9
+      internalID: -5799984415467551075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: orc_merged_4
+      rect:
+        serializedVersion: 2
+        x: 1173
+        y: 262
+        width: 918
+        height: 1331
+      alignment: 9
+      pivot: {x: 0.3227543, y: 0.0707757}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d898061509c758941ab657d0a91bbfa8
+      internalID: 1820457360179033352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: orc_merged_5
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 262
+        width: 936
+        height: 1324
+      alignment: 9
+      pivot: {x: 0.23356031, y: 0.07848117}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca52912b12135f4cafaf3be85632c1d
+      internalID: -8026156070440468441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: orc_merged_6
+      rect:
+        serializedVersion: 2
+        x: 2850
+        y: 1800
+        width: 950
+        height: 1433
+      alignment: 9
+      pivot: {x: 0.34035566, y: 0.091091715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 964221ed7605040458435f513e4729ec
+      internalID: -1624369593784095248
       vertices: []
       indices: 
       edges: []
