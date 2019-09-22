@@ -7,6 +7,8 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField]
+    private AreaOfEffect areaOfEffect;
     private ProjectileConfig config;
     private AudioSource audioSource;
     private float destroyTimer = -1.0f;
@@ -59,6 +61,13 @@ public class Projectile : MonoBehaviour
             rb.isKinematic = true;
             rb.velocity = Vector2.zero;
             collider.enabled = false;
+
+            if(areaOfEffect != null)
+            {
+                Debug.Log("AOE!");
+                areaOfEffect.transform.parent = null;
+                areaOfEffect.gameObject.SetActive(true);
+            }
         }
     }
 

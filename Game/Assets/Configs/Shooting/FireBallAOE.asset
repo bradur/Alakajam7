@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4acc0da7b2849549858440abbc543c8, type: 3}
+  m_Name: FireBallAOE
+  m_EditorClassIdentifier: 
+  speed: 5
+  damage: 2
+  explosionRadius: 5
+  cooldown: 2
+  shootSound: {fileID: 8300000, guid: 7f108c3000eb61c4bb5c402fb40a86e3, type: 3}
+  hitSound: {fileID: 8300000, guid: 0a2af2b900a11dd428386cc64345504a, type: 3}
+  cost: 0
+  hitEffect: {fileID: 4371736750080723462, guid: 8aad2d1715ddefc4f94bfe50625847bd,
+    type: 3}
+  destroyDelay: 1
+  shouldBounce: 1
+  hitLayerMask:
+    serializedVersion: 2
+    m_Bits: 57344

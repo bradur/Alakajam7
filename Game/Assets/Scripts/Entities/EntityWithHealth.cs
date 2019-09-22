@@ -41,7 +41,9 @@ public class EntityWithHealth : MonoBehaviour
     }
 
     public bool LoseHealth(int amount) {
-        //Debug.Log("I am " + name + " and I'm losing " + amount + " health!");
+        if (health <= 0) {
+            return false;
+        }
         health -= amount;
         if (health < 0) {
             health = 0;

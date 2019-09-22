@@ -4,8 +4,10 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour {
+public class UIManager : MonoBehaviour
+{
 
     public static UIManager main;
     [SerializeField]
@@ -13,29 +15,58 @@ public class UIManager : MonoBehaviour {
 
     private Animator animator;
 
-    private void Awake() {
+    private bool shopIsOpen = false;
+
+    private bool gameOver = false;
+
+    [SerializeField]
+    private SpawnerManager spawner;
+
+    private void Awake()
+    {
         main = this;
     }
 
-    private void Start() {
+    private void Start()
+    {
         animator = GetComponent<Animator>();
     }
 
-    void Update () {
-    
+    void Update()
+    {
+
     }
+
+    public bool ShopIsOpen { get { return shopIsOpen; } }
 
     public void ToggleWarning(bool show)
     {
         waveWarning.SetActive(show);
     }
 
-    public void ShowShop() {
-        animator.SetTrigger("showShop");
+    public void ShowShop()
+    {
+        if (!gameOver) {
+            animator.SetTrigger("showShop");
+            shopIsOpen = true;
+        }
     }
 
-    public void HideShop() {
+    public void HideShop()
+    {
         animator.SetTrigger("hideShop");
+        shopIsOpen = false;
     }
-    
+
+    public void GameOver() {
+        animator.SetTrigger("showGameOver");
+        shopIsOpen = true;
+        spawner.StopEverything();
+        Debug.Log("Game over!");
+    }
+
+    public void RestartGame() {
+        SceneManager.LoadScene(0);
+    }
+
 }

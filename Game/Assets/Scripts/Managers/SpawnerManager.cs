@@ -85,6 +85,14 @@ public class SpawnerManager : MonoBehaviour
     {
 
     }
+
+    public void StopEverything() {
+        waveOngoing = false;
+        groupOngoing = false;
+        groupStarted = false;
+        currentWave = 1000;
+    }
+
     void FixedUpdate()
     {
         if (!waveOngoing)
