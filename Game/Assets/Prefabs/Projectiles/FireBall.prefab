@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0225cb1802147e42bf72635bc9096cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 4ea7733ad8e26164298acef2a2e0990d, type: 2}
 --- !u!58 &5727598714915452163
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -62,7 +61,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.72
+  m_Radius: 0.3
 --- !u!50 &5727598714915452189
 Rigidbody2D:
   serializedVersion: 4
@@ -91,11 +90,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5727598714915452162}
     m_Modifications:
-    - target: {fileID: 4371736750080723462, guid: 0d1c51bde42114b48a7bde379a85aae4,
-        type: 3}
-      propertyPath: m_Name
-      value: Fireball
-      objectReference: {fileID: 0}
     - target: {fileID: 778726773409072019, guid: 0d1c51bde42114b48a7bde379a85aae4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -150,6 +144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371736750080723462, guid: 0d1c51bde42114b48a7bde379a85aae4,
+        type: 3}
+      propertyPath: m_Name
+      value: Fireball
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d1c51bde42114b48a7bde379a85aae4, type: 3}
