@@ -8,16 +8,19 @@ using System.Collections;
 public class Projectile : MonoBehaviour
 {
     private ProjectileConfig config;
+    private AudioSource audioSource;
+
     public void Instantiate(ProjectileConfig config) {
         this.config = config;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Shoot(Vector2 direction)
     {
         Rigidbody2D rb2D = GetComponent<Rigidbody2D>();
         rb2D.AddForce(direction * config.Speed, ForceMode2D.Impulse);
-        if (config.ShootSound) {
-            // play
+        if (audioSource != null && config.ShootSound != null) {
+            audioSource.PlayOneShot(config.ShootSound);
         }
     }
 
@@ -28,8 +31,10 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision2D)
     {
-        if (config.HitSound) {
-            // play
+        if (config.HitSound != null)
+        {
+            AudioSource.PlayClipAtPoint(config.HitSound, Camera.main.transform.position);
+            Debug.Log("moi");
         }
 
         EntityWithHealth e = collision2D.gameObject.GetComponent<EntityWithHealth>();

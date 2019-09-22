@@ -16,6 +16,6 @@ MonoBehaviour:
   damage: 2
   explosionRadius: 0
   cooldown: 0.2
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 686f14c5da9a44949873d5bcaf6478da, type: 3}
   hitSound: {fileID: 0}
-  cost: 10
+  cost: 0

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1b4303bd486a744bf7d41913fdb0e8, type: 3}
+  m_Name: DoorHitSounds
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: f6c9377c5e3dbc147bd7fac148db7120, type: 3}
+  - {fileID: 8300000, guid: cc2761a75e97ee9429004e4ef93fe2bc, type: 3}
+  - {fileID: 8300000, guid: dd6db23fa28eafb478ea4f93f2276832, type: 3}
+  - {fileID: 8300000, guid: 5c3def84eb39c08458a2d7b27e6d7d52, type: 3}
+  chanceToPlay: 0.33
+  interval: 0

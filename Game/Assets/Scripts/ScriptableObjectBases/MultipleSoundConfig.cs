@@ -14,4 +14,13 @@ public class MultipleSoundConfig : ScriptableObject
     private List<AudioClip> sounds;
     public List<AudioClip> Sounds { get { return sounds; } }
 
+    [SerializeField]
+    private float chanceToPlay;
+    public float ChanceToPlay { get { return chanceToPlay; } }
+
+    [SerializeField]
+    private float interval;
+    public float Interval { get { return interval; } }
+
+
 }

@@ -23,6 +23,11 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
 
     private bool hasDealtInitialDamage = false;
 
+    private void Start()
+    {
+        hitSource = GetComponent<AudioSource>();
+    }
+
     void Update() {
         if (isInContact && target != null) {
             damageTimer += Time.deltaTime;
@@ -52,9 +57,10 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
         if (!hasDealtInitialDamage) {
             hasDealtInitialDamage = true;
         }
-        if(Random.Range(0, 1) <= config.ChanceToMakeSound)
+        if(Random.Range(0, 1) <= hitSoundConfig.ChanceToPlay)
         {
-
+            AudioClip randomSound = hitSoundConfig.Sounds[Mathf.RoundToInt(Random.Range(0, hitSoundConfig.Sounds.Count - 1))];
+            hitSource.PlayOneShot(randomSound);
         }
         ResetDamageInterval();
     }
