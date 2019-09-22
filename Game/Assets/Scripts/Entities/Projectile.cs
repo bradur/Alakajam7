@@ -22,6 +22,8 @@ public class Projectile : MonoBehaviour
     private float collisionTimer = 0.0f;
     private Vector2 velocityBeforeCollision;
 
+    private bool firstHit;
+
     public void Instantiate(ProjectileConfig config) {
         this.config = config;
         rb = GetComponent<Rigidbody2D>();
@@ -95,8 +97,9 @@ public class Projectile : MonoBehaviour
         }
 
         EntityWithHealth e = collision2D.gameObject.GetComponent<EntityWithHealth>();
-        if(e != null)
+        if(firstHit && e != null)
         {
+            firstHit = false;
             bool entityDied = e.LoseHealth(config.Damage);
             if (entityDied)
             {
@@ -131,5 +134,10 @@ public class Projectile : MonoBehaviour
             collider.enabled = true;
         }
         velocityBeforeCollision = rb.velocity;
+    }
+
+    void FixedUpdate()
+    {
+        firstHit = true;
     }
 }
