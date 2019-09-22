@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0225cb1802147e42bf72635bc9096cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ps: {fileID: 762000262231253202}
 --- !u!58 &2263260858410080925
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -82,7 +83,7 @@ Rigidbody2D:
   m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1001 &1955765032953109553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90,6 +91,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2263260858410080923}
     m_Modifications:
+    - target: {fileID: 4371736750080723462, guid: 62863c915ed0d6143b7b572bf858c0d6,
+        type: 3}
+      propertyPath: m_Name
+      value: magic missile
+      objectReference: {fileID: 0}
     - target: {fileID: 778726773409072019, guid: 62863c915ed0d6143b7b572bf858c0d6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -145,11 +151,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4371736750080723462, guid: 62863c915ed0d6143b7b572bf858c0d6,
-        type: 3}
-      propertyPath: m_Name
-      value: magic missile
-      objectReference: {fileID: 0}
     - target: {fileID: 1276610914585459939, guid: 62863c915ed0d6143b7b572bf858c0d6,
         type: 3}
       propertyPath: TrailModule.colorOverLifetime.maxGradient.ctime1
@@ -165,6 +166,12 @@ PrefabInstance:
 --- !u!4 &1291075349335941026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 778726773409072019, guid: 62863c915ed0d6143b7b572bf858c0d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1955765032953109553}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &762000262231253202 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1276610914585459939, guid: 62863c915ed0d6143b7b572bf858c0d6,
     type: 3}
   m_PrefabInstance: {fileID: 1955765032953109553}
   m_PrefabAsset: {fileID: 0}

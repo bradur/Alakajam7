@@ -39,4 +39,12 @@ public class ProjectileConfig : ScriptableObject
     [SerializeField]
     private int cost;
     public int Cost { get { return cost; } }
+
+    [SerializeField]
+    private GameObject hitEffect;
+    public GameObject HitEffect { get { return hitEffect; } }
+
+    [SerializeField]
+    private float destroyDelay = 1.0f;
+    public float DestroyDelay { get { return destroyDelay; } }
 }

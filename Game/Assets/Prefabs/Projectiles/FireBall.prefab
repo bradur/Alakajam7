@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0225cb1802147e42bf72635bc9096cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ps: {fileID: 6587278235965919165}
 --- !u!58 &5727598714915452163
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -90,6 +91,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5727598714915452162}
     m_Modifications:
+    - target: {fileID: 4371736750080723462, guid: 0d1c51bde42114b48a7bde379a85aae4,
+        type: 3}
+      propertyPath: m_Name
+      value: Fireball
+      objectReference: {fileID: 0}
     - target: {fileID: 778726773409072019, guid: 0d1c51bde42114b48a7bde379a85aae4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -145,16 +151,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4371736750080723462, guid: 0d1c51bde42114b48a7bde379a85aae4,
-        type: 3}
-      propertyPath: m_Name
-      value: Fireball
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d1c51bde42114b48a7bde379a85aae4, type: 3}
 --- !u!4 &4617121611077382349 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 778726773409072019, guid: 0d1c51bde42114b48a7bde379a85aae4,
+    type: 3}
+  m_PrefabInstance: {fileID: 5394705953250194270}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6587278235965919165 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1276610914585459939, guid: 0d1c51bde42114b48a7bde379a85aae4,
     type: 3}
   m_PrefabInstance: {fileID: 5394705953250194270}
   m_PrefabAsset: {fileID: 0}
