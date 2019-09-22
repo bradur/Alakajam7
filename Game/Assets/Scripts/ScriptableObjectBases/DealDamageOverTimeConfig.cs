@@ -28,6 +28,10 @@ public class DealDamageOverTimeConfig : ScriptableObject
     private bool initialIntervalIsZero = true;
     public bool InitialIntervalIsZero { get { return initialIntervalIsZero; } }
 
+    [SerializeField]
+    private float chanceToMakeSound = 0.33f;
+    public float ChanceToMakeSound { get { return chanceToMakeSound; } }
+
     public int GetRandomDamage()
     {
         return Random.Range(damageMin, damageMax);
