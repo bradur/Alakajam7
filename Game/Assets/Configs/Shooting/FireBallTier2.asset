@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4acc0da7b2849549858440abbc543c8, type: 3}
   m_Name: FireBallTier2
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 6
   damage: 5
   explosionRadius: 4
   cooldown: 20
