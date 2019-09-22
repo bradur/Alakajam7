@@ -40,13 +40,14 @@ public class EntityWithHealth : MonoBehaviour
         }
     }
 
-    public void LoseHealth(int amount) {
+    public bool LoseHealth(int amount) {
         //Debug.Log("I am " + name + " and I'm losing " + amount + " health!");
         health -= amount;
         if (health < 0) {
             health = 0;
         }
         UpdateHealth(health);
+        return health == 0;
     }
 
     public void AddHealth(int amount) {
@@ -76,6 +77,8 @@ public class EntityWithHealth : MonoBehaviour
 
     public void Kill()
     {
-        Destroy(gameObject);
+        if (config.DestroyWhenHealthZero) {
+            Destroy(gameObject);
+        }
     }
 }

@@ -35,7 +35,10 @@ public class Projectile : MonoBehaviour
         EntityWithHealth e = collision2D.gameObject.GetComponent<EntityWithHealth>();
         if(e != null)
         {
-            e.LoseHealth(config.Damage);
+            bool entityDied = e.LoseHealth(config.Damage);
+            if (entityDied) {
+                InventoryManager.main.GainMana(1);
+            }
         }
 
         Kill();
