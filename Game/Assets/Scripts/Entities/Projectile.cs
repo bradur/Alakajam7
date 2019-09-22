@@ -15,6 +15,10 @@ public class Projectile : MonoBehaviour
 
     public ParticleSystem ps;
 
+    private int BOUNCE_LAYER;
+    private float collisionTimer = 0.0f;
+    private Vector2 velocityBeforeCollision;
+
     public void Instantiate(ProjectileConfig config) {
         this.config = config;
         rb = GetComponent<Rigidbody2D>();
@@ -23,6 +27,7 @@ public class Projectile : MonoBehaviour
         {
             ps.Play();
         }
+        BOUNCE_LAYER = LayerMask.NameToLayer("MagicBounce");
     }
 
     public void Shoot(Vector2 direction)
@@ -60,6 +65,22 @@ public class Projectile : MonoBehaviour
             // play
         }
 
+        if (config.ShouldBounce && collision2D.gameObject.layer == BOUNCE_LAYER)
+        {
+            if (velocityBeforeCollision.normalized.y < -0.2f)
+            {
+                rb.velocity = new Vector2(velocityBeforeCollision.x, -velocityBeforeCollision.y);
+            }
+            else
+            {
+                var velocity = new Vector2(-5 + Random.value * 10, 10 + Random.value * 5);
+                rb.velocity = velocity.normalized * velocityBeforeCollision.magnitude;
+            }
+            collider.enabled = false;
+            collisionTimer = Time.time + 0.2f;
+            return;
+        }
+
         EntityWithHealth e = collision2D.gameObject.GetComponent<EntityWithHealth>();
         if(e != null)
         {
@@ -83,5 +104,11 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (destroyTimer < 0 && collisionTimer < Time.time && !collider.enabled)
+        {
+            collider.enabled = true;
+        }
+        velocityBeforeCollision = rb.velocity;
     }
 }

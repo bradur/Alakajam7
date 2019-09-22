@@ -47,4 +47,8 @@ public class ProjectileConfig : ScriptableObject
     [SerializeField]
     private float destroyDelay = 1.0f;
     public float DestroyDelay { get { return destroyDelay; } }
+
+    [SerializeField]
+    private bool shouldBounce = true;
+    public bool ShouldBounce { get { return shouldBounce; } }
 }
