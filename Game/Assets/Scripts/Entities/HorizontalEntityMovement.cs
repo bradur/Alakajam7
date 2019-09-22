@@ -159,6 +159,5 @@ public class HorizontalEntityMovement : MonoBehaviour
             //Debug.Log("No direction! Cannot move!");
             return;
         }
-        Debug.Log("ShouldMove:" + shouldMove + " Grounded: " + grounded + " Stopped: " + stopped);
     }
 }

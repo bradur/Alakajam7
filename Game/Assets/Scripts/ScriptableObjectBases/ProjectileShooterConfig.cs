@@ -6,6 +6,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum MouseButton
+{
+    None,
+    LeftMouseButton,
+    RightMouseButton
+}
+
 [CreateAssetMenu(fileName = "ProjectileShooterConfig ", menuName = "ScriptableObjects/New ProjectileShooterConfig")]
 public class ProjectileShooterConfig : ScriptableObject
 {
@@ -16,6 +23,16 @@ public class ProjectileShooterConfig : ScriptableObject
 
     [SerializeField]
     private List<ProjectileConfig> projectileTiers;
+
+    [SerializeField]
+    private MouseButton mouseButton = MouseButton.None;
+
+    public bool KeyIsPressed () {
+        if (mouseButton != MouseButton.None) {
+            return Input.GetMouseButtonDown((int)mouseButton - 1);
+        }
+        return false;
+    }
 
     public ProjectileConfig GetProjectileConfig(int tier)
     {

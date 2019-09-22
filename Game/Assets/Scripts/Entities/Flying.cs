@@ -44,8 +44,11 @@ public class Flying : MonoBehaviour
         if (dropOff)
         {
             body.velocity = dropOffFlight;
-            cargo.transform.parent = null;
-            cargo.SetGravityOn();
+            if (cargo != null)
+            {
+                cargo.transform.parent = null;
+                cargo.SetGravityOn();
+            }
         }
         else if(flyToDropOff)
         {

@@ -20,6 +20,10 @@ public class ProjectileConfig : ScriptableObject
     public int Damage { get { return damage; } }
 
     [SerializeField]
+    private int explosionRadius = 0;
+    public int ExplosionRadius { get { return explosionRadius; } }
+
+    [SerializeField]
     private float cooldown = 0.5f;
 
     public float Cooldown { get { return cooldown; } }

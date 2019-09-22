@@ -29,10 +29,9 @@ public class PlayerAimShoot : MonoBehaviour {
     }
 
     void Update () {
-        if (Input.GetMouseButtonDown(0)) {
+        if (fireballShooter.KeyIsPressed()) {
             fireballShooter.Shoot(aimer.GetDirection());
-        }
-        if (Input.GetMouseButtonDown(1)) {
+        } else if (arcaneMissileShooter.KeyIsPressed()) {
             arcaneMissileShooter.Shoot(aimer.GetDirection());
         }
     }

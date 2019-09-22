@@ -71,6 +71,10 @@ public class ProjectileShooter : MonoBehaviour
         }
     }
 
+    public bool KeyIsPressed() {
+        return config.KeyIsPressed();
+    }
+
     void Update() {
         cooldownTimer -= Time.deltaTime;
         UpdateCooldown(cooldownTimer);
