@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   mana: 0
-  startingMana: 0
+  startingMana: 10

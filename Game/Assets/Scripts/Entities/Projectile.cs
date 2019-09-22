@@ -105,11 +105,11 @@ public class Projectile : MonoBehaviour
             {
                 if (e.gameObject.tag == "Badman")
                 {
-                    InventoryManager.main.GainMana(4);
+                    InventoryManager.main.GainMana(3);
                 }
                 else
                 {
-                    InventoryManager.main.GainMana(2);
+                    InventoryManager.main.GainMana(1);
                 }
             }
         }
