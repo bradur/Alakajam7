@@ -10,12 +10,6 @@ public class EntityHealthDisplay : MonoBehaviour
 {
 
     [SerializeField]
-    private Text txtName;
-
-    [SerializeField]
-    private Image imgIcon;
-
-    [SerializeField]
     private Text txtHealth;
 
     [SerializeField]
@@ -39,14 +33,13 @@ public class EntityHealthDisplay : MonoBehaviour
             healthBatRectTransform = imgHealthBar.GetComponent<RectTransform>();
             healthBarMaxWidth = healthBatRectTransform.sizeDelta.x;
             maxHealth = healthConfig.Health;
-            imgIcon.sprite = displayConfig.Icon;
         }
     }
 
     public void UpdateHealth(int health)
     {
         InitializeIfNotInitialized();
-        if (health < 0)
+        if (health <= 0)
         {
             health = 0;
         }
