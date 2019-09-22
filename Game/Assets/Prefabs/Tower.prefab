@@ -9191,7 +9191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 216464809804150065}
   - component: {fileID: 1966155496606079289}
-  m_Layer: 8
+  m_Layer: 16
   m_Name: Cellar Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

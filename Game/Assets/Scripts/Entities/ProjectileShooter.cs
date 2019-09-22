@@ -68,7 +68,7 @@ public class ProjectileShooter : MonoBehaviour
 
     public void Shoot(Vector2 direction)
     {
-        if (cooldownTimer > 0f)
+        if (cooldownTimer > 0f || UIManager.main.ShopIsOpen)
         {
             return;
         }
