@@ -54,7 +54,9 @@ public class TierUpgradeButton : MonoBehaviour {
         if (mana < cost) {
             DisableButton();
         }
-        if (mana >= cost) {
+        if (mana >= cost)
+        {
+            button = GetComponent<Button>();
             if (button.enabled == false && !maxTierReached) {
                 EnableButton();
             }

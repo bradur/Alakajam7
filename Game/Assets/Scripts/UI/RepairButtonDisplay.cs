@@ -41,11 +41,13 @@ public class RepairButtonDisplay : MonoBehaviour {
     }
 
     private void DisableButton() {
+        button = GetComponent<Button>();
         button.enabled = false;
         indicatorImage.color = disabledColor;
     }
 
     private void EnableButton() {
+        button = GetComponent<Button>();
         button.enabled = true;
         indicatorImage.color = originalColor;
     }

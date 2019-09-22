@@ -65,7 +65,6 @@ public class Flying : MonoBehaviour
 
             if (Time.fixedTime - dropOffMoment > 3f)
             {
-                Debug.Log(Time.fixedTime - dropOffMoment + ", " + Time.fixedTime + ", " + dropOffMoment);
                 Destroy(gameObject);
             }
         }
