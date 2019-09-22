@@ -64,7 +64,6 @@ public class Projectile : MonoBehaviour
 
             if(areaOfEffect != null)
             {
-                Debug.Log("AOE!");
                 areaOfEffect.transform.parent = null;
                 areaOfEffect.gameObject.SetActive(true);
             }

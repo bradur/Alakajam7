@@ -21,6 +21,10 @@ public class SpawnerManager : MonoBehaviour
     private Transform midSpawnPoint;
     [SerializeField]
     private Transform highSpawnPoint;
+    [SerializeField]
+    private WaveTime waveTimeConfig;
+    [SerializeField]
+    private WaveCount waveCount;
 
     private bool waveOngoing = false;
     private int currentWave = -1;
@@ -56,8 +60,11 @@ public class SpawnerManager : MonoBehaviour
         timeWaveStarted = Time.fixedTime;
         timeGroupStarted = 0;
         currentGroup = -1;
-
+        waveTimeConfig.WaveMaxTime = currentWaveData.Groups[0].startDelay;
+        waveTimeConfig.WaveStartTime = Time.time;
+        waveCount.Count = currentWave;
         UIManager.main.ToggleWarning(true);
+        UIManager.main.ToggleWaveStartTimer(true);
     }
 
     void StartGroup()
@@ -130,6 +137,7 @@ public class SpawnerManager : MonoBehaviour
                 if (Time.fixedTime - timeGroupStarted > currentGroupData.startDelay)
                 {
                     UIManager.main.ToggleWarning(false);
+                    UIManager.main.ToggleWaveStartTimer(false);
 
                     groupStarted = true;
                     StartCoroutine(SpawnGroup());
