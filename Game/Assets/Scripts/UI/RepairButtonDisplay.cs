@@ -60,8 +60,6 @@ public class RepairButtonDisplay : MonoBehaviour {
         } else if (currentMana >= cost){
             EnableButton();
         }
-        Debug.Log(health);
-        Debug.Log(maxHealth);
     }
 
 }

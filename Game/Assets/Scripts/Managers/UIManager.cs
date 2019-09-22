@@ -11,8 +11,14 @@ public class UIManager : MonoBehaviour {
     [SerializeField]
     private GameObject waveWarning;
 
+    private Animator animator;
+
     private void Awake() {
         main = this;
+    }
+
+    private void Start() {
+        animator = GetComponent<Animator>();
     }
 
     void Update () {
@@ -22,6 +28,16 @@ public class UIManager : MonoBehaviour {
     public void ToggleWarning(bool show)
     {
         waveWarning.SetActive(show);
+    }
+
+    public void ShowShop() {
+        Debug.Log("Show!");
+        animator.SetTrigger("showShop");
+    }
+
+    public void HideShop() {
+        Debug.Log("Hide!!");
+        animator.SetTrigger("hideShop");
     }
     
 }

@@ -29,7 +29,6 @@ public class Flying : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("start");
         cargo = Instantiate(cargoConfig.CargoPrefab);
         cargo.Initialize();
         cargo.transform.SetParent(transform);

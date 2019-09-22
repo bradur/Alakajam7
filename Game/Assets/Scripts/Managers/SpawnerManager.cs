@@ -41,6 +41,46 @@ public class SpawnerManager : MonoBehaviour
 
     }
 
+
+    void StartWave()
+    {
+        currentWaveData = gameData.Waves[currentWave];
+
+        waveOngoing = true;
+        groupOngoing = false;
+        groupStarted = false;
+
+        timeWaveStarted = Time.fixedTime;
+        timeGroupStarted = 0;
+        currentGroup = -1;
+
+        UIManager.main.ToggleWarning(true);
+    }
+
+    void StartGroup()
+    {
+        currentGroupData = currentWaveData.Groups[currentGroup];
+        groupOngoing = true;
+        timeGroupStarted = Time.fixedTime;
+    }
+
+    void EndWave()
+    {
+        if (waveOngoing) {
+            UIManager.main.ShowShop();
+        }
+    }
+
+    public void StartNextWave()
+    {
+        UIManager.main.HideShop();
+        waveOngoing = false;
+    }
+
+    void GameEnd()
+    {
+
+    }
     void FixedUpdate()
     {
         if (!waveOngoing)
@@ -48,22 +88,11 @@ public class SpawnerManager : MonoBehaviour
             currentWave++;
             if (currentWave >= gameData.Waves.Count)
             {
-                //end the game here!
+                GameEnd();
             }
             else
             {
-                // get a new wave
-                currentWaveData = gameData.Waves[currentWave];
-
-                waveOngoing = true;
-                groupOngoing = false;
-                groupStarted = false;
-
-                timeWaveStarted = Time.fixedTime;
-                timeGroupStarted = 0;
-                currentGroup = -1;
-
-                UIManager.main.ToggleWarning(true);
+                StartWave();
             }
         }
         else
@@ -74,17 +103,14 @@ public class SpawnerManager : MonoBehaviour
                 if (currentGroup >= currentWaveData.Groups.Count)
                 {
                     // if there are enemies left, do not proceed to the next wave
-                    if(activeEnemies.Count == 0)
+                    if (activeEnemies.Count == 0)
                     {
-                        waveOngoing = false;
+                        EndWave();
                     }
                 }
                 else
                 {
-                    // get a new group
-                    currentGroupData = currentWaveData.Groups[currentGroup];
-                    groupOngoing = true;
-                    timeGroupStarted = Time.fixedTime;
+                    StartGroup();
                 }
             }
             else if (!groupStarted)
@@ -98,12 +124,14 @@ public class SpawnerManager : MonoBehaviour
                 }
             }
         }
-
-        // wave time duration has gone, next wave starts even if there are enemies left
-        if(Time.fixedTime - timeWaveStarted > currentWaveData.Duration)
+        /*for (int index = activeEnemies.Count; index > 0; index -= 1)
         {
-            waveOngoing = false;
-        }
+            if (activeEnemies[index] == null)
+            {
+                activeEnemies.Remove(activeEnemies[index]);
+            }
+        }*/
+        activeEnemies = activeEnemies.Where(x => x != null).ToList();
     }
 
     // Coroutine that spawns a group
@@ -125,7 +153,7 @@ public class SpawnerManager : MonoBehaviour
 
             GameObject obj = Instantiate(prefab);
             //flying poop code
-            if(enemy.type == EnemyType.Flying)
+            if (enemy.type == EnemyType.Flying)
             {
                 Flying flyingObj = obj.GetComponent<Flying>();
                 if (flyingObj != null)
@@ -134,11 +162,11 @@ public class SpawnerManager : MonoBehaviour
                 }
             }
 
-            if(enemy.spawn == SpawnPoint.Mid)
+            if (enemy.spawn == SpawnPoint.Mid)
             {
                 obj.transform.position = midSpawnPoint.position;
             }
-            else if(enemy.spawn == SpawnPoint.High)
+            else if (enemy.spawn == SpawnPoint.High)
             {
                 obj.transform.position = highSpawnPoint.position;
             }
@@ -146,7 +174,7 @@ public class SpawnerManager : MonoBehaviour
             {
                 obj.transform.position = groundSpawnPoint.position;
             }
-
+            activeEnemies.Add(obj);
             yield return new WaitForSeconds(currentGroupData.interval);
         }
 
