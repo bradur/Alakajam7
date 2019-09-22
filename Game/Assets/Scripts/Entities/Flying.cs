@@ -19,15 +19,27 @@ public class Flying : MonoBehaviour
     private bool flyToDropOff = false;
     private bool dropOff = false;
     private Vector2 dropOffFlight;
+    private float dropOffMoment;
 
+    [SerializeField]
     private GameObject dropOffTarget;
 
     [SerializeField]
     private Transform cargoPosition;
 
     private Cargo cargo;
+    private bool initialized = false;
+
     // Start is called before the first frame update
     void Start()
+    {
+        if (!initialized)
+        {
+            Initialize();
+        }
+    }
+
+    public void Initialize()
     {
         cargo = Instantiate(cargoConfig.CargoPrefab);
         cargo.Initialize();
@@ -36,6 +48,7 @@ public class Flying : MonoBehaviour
         lastFlap = Time.fixedTime;
         origin = transform.position.y;
         cargo.SetGravityOff();
+        initialized = true;
     }
 
     void FixedUpdate()
@@ -47,9 +60,16 @@ public class Flying : MonoBehaviour
             {
                 cargo.transform.parent = null;
                 cargo.SetGravityOn();
+                dropOffMoment = Time.fixedTime;
+            }
+
+            if (Time.fixedTime - dropOffMoment > 3f)
+            {
+                Debug.Log(Time.fixedTime - dropOffMoment + ", " + Time.fixedTime + ", " + dropOffMoment);
+                Destroy(gameObject);
             }
         }
-        else if(flyToDropOff)
+        else if (flyToDropOff)
         {
             body.velocity = dropOffFlight;
             if (dropOffTarget.transform.position.x - transform.position.x > cargoConfig.DistanceForDropOffAfterTarget)
@@ -110,6 +130,12 @@ public class Flying : MonoBehaviour
         {
             cargo.transform.parent = null;
             cargo.SetGravityOn();
+            dropOffMoment = Time.fixedTime;
         }
+    }
+
+    public Cargo GetCargo()
+    {
+        return cargo;
     }
 }

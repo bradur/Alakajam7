@@ -67,7 +67,6 @@ public class Projectile : MonoBehaviour
         if (config.HitSound != null)
         {
             AudioSource.PlayClipAtPoint(config.HitSound, Camera.main.transform.position);
-            Debug.Log("moi");
         }
 
         if (config.ShouldBounce && collision2D.gameObject.layer == BOUNCE_LAYER)

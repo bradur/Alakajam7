@@ -156,7 +156,9 @@ public class SpawnerManager : MonoBehaviour
                 Flying flyingObj = obj.GetComponent<Flying>();
                 if (flyingObj != null)
                 {
+                    flyingObj.Initialize();
                     flyingObj.SetDropOffTarget(cargoTarget);
+                    activeEnemies.Add(flyingObj.GetCargo().gameObject);
                 }
             }
 

@@ -24,7 +24,6 @@ public class GoblinChatter : MonoBehaviour {
             {
                 AudioClip randomSound = soundConfig.Sounds[Mathf.RoundToInt(Random.Range(0, soundConfig.Sounds.Count - 1))];
                 chatterSource.PlayOneShot(randomSound);
-                Debug.Log("moi");
             }
             lastSoundTime = Time.fixedTime;
         }
