@@ -19,7 +19,7 @@ MonoBehaviour:
   shootSound: {fileID: 8300000, guid: 456f3db034e245645b32deaacddc9384, type: 3}
   hitSound: {fileID: 8300000, guid: 6f349630f57142648b42403b8d69e348, type: 3}
   cost: 0
-  hitEffect: {fileID: 4371736750080723462, guid: 8aad2d1715ddefc4f94bfe50625847bd,
+  hitEffect: {fileID: 4371736750080723462, guid: 37f54532b5504e54fb1b86e1eec4d9d7,
     type: 3}
   destroyDelay: 1
   shouldBounce: 0
