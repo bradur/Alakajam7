@@ -11,6 +11,13 @@ public class UpdateCooldownPercentageEvent : UnityEvent<float>
 {
 
 }
+[System.Serializable]
+public class UpdateSpellTier : UnityEvent<int>
+{
+
+}
+
+
 
 public class ProjectileShooter : MonoBehaviour
 {
@@ -29,10 +36,16 @@ public class ProjectileShooter : MonoBehaviour
     private int maxTier;
 
     private float cooldownTimer = 0f;
+    public UpdateSpellTier updateSpellTier;
+
+    public void UpdateSpellTier(int tier) {
+        updateSpellTier.Invoke(tier);
+    }
 
     private void Start() {
         maxTier = config.MaxTier;
         projectileConfig = config.GetProjectileConfig(tier);
+        updateSpellTier.Invoke(tier);
     }
 
     private Projectile GetProjectile()
@@ -45,6 +58,7 @@ public class ProjectileShooter : MonoBehaviour
         if (tier > maxTier) {
             tier = maxTier;
         }
+        updateSpellTier.Invoke(tier);
     }
 
     public void Shoot(Vector2 direction)
