@@ -8,6 +8,7 @@ using System.Collections;
 public class Projectile : MonoBehaviour
 {
     private ProjectileConfig config;
+    private AudioSource audioSource;
     private float destroyTimer = -1.0f;
 
     private Rigidbody2D rb;
@@ -23,6 +24,8 @@ public class Projectile : MonoBehaviour
         this.config = config;
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
+        this.config = config;
+        audioSource = GetComponent<AudioSource>();
         if (ps != null)
         {
             ps.Play();
@@ -34,8 +37,8 @@ public class Projectile : MonoBehaviour
     {
         Rigidbody2D rb2D = GetComponent<Rigidbody2D>();
         rb2D.AddForce(direction * config.Speed, ForceMode2D.Impulse);
-        if (config.ShootSound) {
-            // play
+        if (audioSource != null && config.ShootSound != null) {
+            audioSource.PlayOneShot(config.ShootSound);
         }
     }
 
@@ -61,8 +64,10 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision2D)
     {
-        if (config.HitSound) {
-            // play
+        if (config.HitSound != null)
+        {
+            AudioSource.PlayClipAtPoint(config.HitSound, Camera.main.transform.position);
+            Debug.Log("moi");
         }
 
         if (config.ShouldBounce && collision2D.gameObject.layer == BOUNCE_LAYER)
@@ -86,7 +91,7 @@ public class Projectile : MonoBehaviour
         {
             bool entityDied = e.LoseHealth(config.Damage);
             if (entityDied) {
-                InventoryManager.main.GainMana(1);
+                //InventoryManager.main.GainMana(1);
             }
         }
         

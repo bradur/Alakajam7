@@ -10,6 +10,9 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
 
     [SerializeField]
     private DealDamageOverTimeConfig config;
+    [SerializeField]
+    private MultipleSoundConfig hitSoundConfig;
+    private AudioSource hitSource;
 
     private bool isInContact = false;
 
@@ -19,6 +22,11 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
     private float damageTimer = 0f;
 
     private bool hasDealtInitialDamage = false;
+
+    private void Start()
+    {
+        hitSource = GetComponent<AudioSource>();
+    }
 
     void Update() {
         if (isInContact && target != null) {
@@ -48,6 +56,11 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
         target.LoseHealth(config.GetRandomDamage());
         if (!hasDealtInitialDamage) {
             hasDealtInitialDamage = true;
+        }
+        if(Random.Range(0, 1) <= hitSoundConfig.ChanceToPlay)
+        {
+            AudioClip randomSound = hitSoundConfig.Sounds[Mathf.RoundToInt(Random.Range(0, hitSoundConfig.Sounds.Count - 1))];
+            hitSource.PlayOneShot(randomSound);
         }
         ResetDamageInterval();
     }
