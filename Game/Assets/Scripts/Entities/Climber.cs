@@ -16,7 +16,7 @@ public class Climber : MonoBehaviour
     }
 
     private bool grabbed;
-    private float gravityScale = 1.0f;
+    private float gravityScale = 4.0f;
     private int layer;
 
     public LayerMask ClimbingLayer;
