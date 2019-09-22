@@ -10,6 +10,9 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
 
     [SerializeField]
     private DealDamageOverTimeConfig config;
+    [SerializeField]
+    private MultipleSoundConfig hitSoundConfig;
+    private AudioSource hitSource;
 
     private bool isInContact = false;
 
@@ -48,6 +51,10 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
         target.LoseHealth(config.GetRandomDamage());
         if (!hasDealtInitialDamage) {
             hasDealtInitialDamage = true;
+        }
+        if(Random.Range(0, 1) <= config.ChanceToMakeSound)
+        {
+
         }
         ResetDamageInterval();
     }
