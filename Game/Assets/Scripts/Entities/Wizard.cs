@@ -33,13 +33,13 @@ public class Wizard : MonoBehaviour
         {
             Vector2 targetPos = Target.position;
             Vector2 curPos = MainHand.transform.position;
-            var targetDir = targetPos - curPos;
+            var targetDir = (targetPos - curPos).normalized;
 
-            if (targetDir.x < 0 && transform.localScale.x > 0)
+            if (targetDir.x < -0.1f && transform.localScale.x > 0)
             {
                 transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
             }
-            if (targetDir.x > 0 && transform.localScale.x < 0)
+            if (targetDir.x > 0.1f && transform.localScale.x < 0)
             {
                 transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
             }
