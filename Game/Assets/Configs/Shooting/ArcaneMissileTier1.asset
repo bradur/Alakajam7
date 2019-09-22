@@ -15,7 +15,11 @@ MonoBehaviour:
   speed: 25
   damage: 1
   explosionRadius: 0
-  cooldown: 2
+  cooldown: 0.5
   shootSound: {fileID: 8300000, guid: 686f14c5da9a44949873d5bcaf6478da, type: 3}
   hitSound: {fileID: 0}
+  hitEffect: {fileID: 4371736750080723462, guid: cf3c1859377f95a4fbf628e65742ab25,
+    type: 3}
+  destroyDelay: 1
   cost: 0
+  

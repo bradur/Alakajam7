@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a46e2cfc43f740248a10685e44680bcc, type: 3}
-  m_Name: BasicEnemyHealth
+  m_Script: {fileID: 11500000, guid: 12ecac10be5157647bee1dff8fa27e23, type: 3}
+  m_Name: CauldronHealthDisplay
   m_EditorClassIdentifier: 
-  health: 5
-  destroyWhenHealthZero: 1
-  deathEffect: {fileID: 4371736750080723462, guid: bec0cbe8b1fbfa045997be62d4ceae40,
-    type: 3}
+  icon: {fileID: 21300000, guid: c1bcf289236e504418e7042fa2d16fde, type: 3}
+  entityName: Cauldron

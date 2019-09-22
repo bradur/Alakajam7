@@ -9,10 +9,23 @@ public class Projectile : MonoBehaviour
 {
     private ProjectileConfig config;
     private AudioSource audioSource;
+    private float destroyTimer = -1.0f;
+
+    private Rigidbody2D rb;
+    private Collider2D collider;
+
+    public ParticleSystem ps;
 
     public void Instantiate(ProjectileConfig config) {
         this.config = config;
+        rb = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
+        this.config = config;
         audioSource = GetComponent<AudioSource>();
+        if (ps != null)
+        {
+            ps.Play();
+        }
     }
 
     public void Shoot(Vector2 direction)
@@ -26,7 +39,22 @@ public class Projectile : MonoBehaviour
 
     public void Kill()
     {
-        Destroy(gameObject);
+        if (destroyTimer < 0)
+        {
+            if (config.HitEffect != null)
+            {
+                Instantiate(config.HitEffect, transform);
+            }
+            if (ps != null)
+            {
+                ps.Stop();
+            }
+            destroyTimer = Time.time + config.DestroyDelay;
+            rb.gravityScale = 0;
+            rb.isKinematic = true;
+            rb.velocity = Vector2.zero;
+            collider.enabled = false;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision2D)
@@ -45,7 +73,7 @@ public class Projectile : MonoBehaviour
                 //InventoryManager.main.GainMana(1);
             }
         }
-
+        
         Kill();
     }
 
@@ -54,6 +82,11 @@ public class Projectile : MonoBehaviour
         if (Vector3.Distance(transform.position, Vector3.zero) > 200)
         {
             Kill();
+        }
+
+        if (destroyTimer > 0 && destroyTimer < Time.time)
+        {
+            Destroy(gameObject);
         }
     }
 }

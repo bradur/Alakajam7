@@ -19,4 +19,8 @@ public class EntityWithHealthConfig : ScriptableObject
     private bool destroyWhenHealthZero = true;
     public bool DestroyWhenHealthZero { get { return destroyWhenHealthZero; } }
 
+    [SerializeField]
+    private GameObject deathEffect;
+    public GameObject DeathEffect { get { return deathEffect; } }
+
 }

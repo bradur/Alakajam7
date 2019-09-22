@@ -82,6 +82,11 @@ public class EntityWithHealth : MonoBehaviour
         {
             flying.ForceDrop();
         }
+        if (config.DeathEffect != null)
+        {
+            GameObject obj = Instantiate(config.DeathEffect);
+            obj.transform.position = transform.position;
+        }
         if (config.DestroyWhenHealthZero) {
             Destroy(gameObject);
         }
