@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2788107795402726988}
   - component: {fileID: 3140695652549805718}
   - component: {fileID: 1339376030}
+  - component: {fileID: 3374934190674727564}
   m_Layer: 15
   m_Name: Bat
   m_TagString: Untagged
@@ -85,9 +86,25 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.53, y: 0}
   serializedVersion: 2
-  m_Radius: 1.28
+  m_Radius: 1
+--- !u!114 &3374934190674727564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3001663999936576289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d908f45fc3b704f82b34935c48f30e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: d4e1527e6d91e9746b8b7c4b7762f941, type: 2}
+  updateHealthEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7671780367416600610
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +129,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7671780367416600610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.2, z: 0}
+  m_LocalPosition: {x: -0.1, y: -2.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3001663999936576291}

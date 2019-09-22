@@ -103,4 +103,14 @@ public class Flying : MonoBehaviour
     {
         dropOffTarget = target;
     }
+
+    public void ForceDrop()
+    {
+        body.velocity = dropOffFlight;
+        if (cargo != null)
+        {
+            cargo.transform.parent = null;
+            cargo.SetGravityOn();
+        }
+    }
 }
