@@ -18,7 +18,7 @@ MonoBehaviour:
   cooldown: 0.5
   shootSound: {fileID: 0}
   hitSound: {fileID: 0}
-  cost: 0
+  cost: 25
   hitEffect: {fileID: 4371736750080723462, guid: 8aad2d1715ddefc4f94bfe50625847bd,
     type: 3}
   destroyDelay: 1

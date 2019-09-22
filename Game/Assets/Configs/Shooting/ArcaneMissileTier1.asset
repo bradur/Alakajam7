@@ -15,7 +15,7 @@ MonoBehaviour:
   speed: 25
   damage: 1
   explosionRadius: 0
-  cooldown: 2
+  cooldown: 0.5
   shootSound: {fileID: 0}
   hitSound: {fileID: 0}
   cost: 0
