@@ -8,19 +8,28 @@ using System.Collections;
 
 public class RectTransformFollowMouse : MonoBehaviour {
 
-    private RectTransform rectTransform;
+    //private RectTransform rectTransform;
+    private Image image;
 
+    [SerializeField]
+    private Canvas parentCanvas;
     void Start() {
-        rectTransform = GetComponent<RectTransform>();
+        //rectTransform = GetComponent<RectTransform>();
+        image = GetComponent<Image>();
     }
 
     void Update() {
         Cursor.visible = false;
-        Vector2 mousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        //Vector2 mousePos = Input.mousePosition;
-        mousePos.x *= Screen.width;
-        mousePos.y *= Screen.height;
-        rectTransform.anchoredPosition = mousePos;
+        Vector3 movePos;
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(
+            parentCanvas.transform as RectTransform,
+            Input.mousePosition,
+            null, //parentCanvas.worldCamera,
+            out movePos
+        );
+
+
+        image.transform.position = (Vector2)movePos;
     }
 
 }

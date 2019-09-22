@@ -14,7 +14,7 @@ public class RepairButtonDisplay : MonoBehaviour {
     private Color disabledColor = Color.red;
     [SerializeField]
     private Text txtCost;
-    private Color originalColor;
+    private Color originalColor = new Color(0, 0, 0, 0);
     [SerializeField]
     private Image indicatorImage;
     [SerializeField]
@@ -27,7 +27,7 @@ public class RepairButtonDisplay : MonoBehaviour {
 
     private void Start() {
         button = GetComponent<Button>();
-        originalColor = indicatorImage.color;
+        //originalColor = indicatorImage.color;
         txtCost.text = cost.ToString();
     }
 

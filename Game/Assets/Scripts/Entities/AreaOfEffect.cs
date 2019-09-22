@@ -7,8 +7,9 @@ using System.Collections;
 
 public class AreaOfEffect : MonoBehaviour
 {
-    [SerializeField]
-    private ProjectileConfig config;
+    private float radius;
+    private int damage;
+    private int layerMaskValue;
     private Collider2D col;
 
     void Start()
@@ -18,14 +19,15 @@ public class AreaOfEffect : MonoBehaviour
 
     void FixedUpdate()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, config.ExplosionRadius, config.HitLayerMask.value);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius, layerMaskValue);
 
         foreach (Collider2D collider in hits)
         {
+            Debug.Log("pöl");
             EntityWithHealth e = collider.gameObject.GetComponent<EntityWithHealth>();
             if (e != null)
             {
-                bool entityDied = e.LoseHealth(config.Damage);
+                bool entityDied = e.LoseHealth(damage);
                 if (entityDied)
                 {
                     InventoryManager.main.GainMana(1);
@@ -45,7 +47,7 @@ public class AreaOfEffect : MonoBehaviour
         EntityWithHealth e = collision.gameObject.GetComponent<EntityWithHealth>();
         if (e != null)
         {
-            bool entityDied = e.LoseHealth(config.Damage);
+            bool entityDied = e.LoseHealth(damage);
             if (entityDied)
             {
                 InventoryManager.main.GainMana(1);
@@ -53,5 +55,12 @@ public class AreaOfEffect : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    public void SetStuff(float radius, int damage, int layerMask)
+    {
+        this.radius = radius;
+        this.damage = damage;
+        this.layerMaskValue = layerMask;
     }
 }

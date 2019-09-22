@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: GoblinScreechSounds
   m_EditorClassIdentifier: 
   sounds:
-  - {fileID: 8300000, guid: 9a74907b8d934614cb2e9df50f3e3568, type: 3}
-  - {fileID: 8300000, guid: 013cbf64bf0baf74885d358b56e446c8, type: 3}
-  - {fileID: 8300000, guid: 2eeb49702ea12ab4dad91737c5227034, type: 3}
-  - {fileID: 8300000, guid: 86b3e957b65e7e74db460e21da942502, type: 3}
-  - {fileID: 8300000, guid: 9edd36160a967d343bab931cf84854ea, type: 3}
-  - {fileID: 8300000, guid: adcce263fefbe97408edb50d000b5a3c, type: 3}
-  - {fileID: 8300000, guid: 18e9cde988ec51f4182eed0aa9044b97, type: 3}
-  - {fileID: 8300000, guid: 4ed82f48393fc1c4c83c7679270da19c, type: 3}
+  - {fileID: 8300000, guid: f3e140b3230c42240ab6625d952ce14b, type: 3}
+  - {fileID: 8300000, guid: f113aa469d772fa4ea22fe1827789325, type: 3}
+  - {fileID: 8300000, guid: cc19936b4a35c944dbd7edeaacf6ba5a, type: 3}
+  - {fileID: 8300000, guid: a1f9c4fda6b390e41a120ff72b1e3c6b, type: 3}
+  - {fileID: 8300000, guid: b50b0e6ff709b9e47936e275862d06a9, type: 3}
+  - {fileID: 8300000, guid: 1d6857c4f56f38e4785d7aac971ace3d, type: 3}
+  - {fileID: 8300000, guid: 4c29119aca294154fb6c1cf473276205, type: 3}
+  - {fileID: 8300000, guid: 276d3d4cf469f2347b189a2e6feffa4a, type: 3}
   chanceToPlay: 0.1
   interval: 3.5

@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     public static UIManager main;
     [SerializeField]
     private GameObject waveWarning;
+    [SerializeField]
+    private GameObject waveTimer;
 
     private Animator animator;
 
@@ -41,8 +43,14 @@ public class UIManager : MonoBehaviour
 
     public void ToggleWarning(bool show)
     {
-        waveWarning.SetActive(show);
+        //waveWarning.SetActive(show);
     }
+
+    public void ToggleWaveStartTimer(bool show)
+    {
+        waveTimer.SetActive(show);
+    }
+
 
     public void ShowShop()
     {

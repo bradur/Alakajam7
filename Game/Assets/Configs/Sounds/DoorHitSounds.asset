@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: DoorHitSounds
   m_EditorClassIdentifier: 
   sounds:
-  - {fileID: 8300000, guid: f6c9377c5e3dbc147bd7fac148db7120, type: 3}
-  - {fileID: 8300000, guid: cc2761a75e97ee9429004e4ef93fe2bc, type: 3}
-  - {fileID: 8300000, guid: dd6db23fa28eafb478ea4f93f2276832, type: 3}
-  - {fileID: 8300000, guid: 5c3def84eb39c08458a2d7b27e6d7d52, type: 3}
+  - {fileID: 8300000, guid: 945626e4e43ed524b8d055e16473489f, type: 3}
+  - {fileID: 8300000, guid: 2c1721374560a1e408e206171245cb1a, type: 3}
+  - {fileID: 8300000, guid: 5bab484b95760b14598bb01aa9532133, type: 3}
+  - {fileID: 8300000, guid: e68a2eb9a9459924285a877a00427f22, type: 3}
   chanceToPlay: 0.33
   interval: 0

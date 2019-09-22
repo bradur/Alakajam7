@@ -16,10 +16,13 @@ MonoBehaviour:
   damage: 2
   explosionRadius: 0
   cooldown: 0.5
-  shootSound: {fileID: 8300000, guid: 686f14c5da9a44949873d5bcaf6478da, type: 3}
+  shootSound: {fileID: 8300000, guid: 93c543ea5b892ee41bd6fc0c5a4d3073, type: 3}
   hitSound: {fileID: 8300000, guid: fdd9b8d9d4a1db944b1212eab3486c3d, type: 3}
   cost: 0
   hitEffect: {fileID: 4371736750080723462, guid: cf3c1859377f95a4fbf628e65742ab25,
     type: 3}
   destroyDelay: 1
   shouldBounce: 1
+  hitLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
