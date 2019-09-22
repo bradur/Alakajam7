@@ -23,9 +23,12 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
 
     private bool hasDealtInitialDamage = false;
 
+    private Animator anim;
+
     private void Start()
     {
         hitSource = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
     }
 
     void Update() {
@@ -42,6 +45,11 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
         target = targetEntity;
         ResetDamageInterval();
         damageTimer = 0f;
+        if (anim != null)
+        {
+            anim.SetBool("Smashing", true);
+            anim.SetTrigger("StartSmash");
+        }
     }
 
     private void ResetDamageInterval() {
@@ -67,6 +75,10 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
 
     private void StopDealingDamage () {
         target = null;
+        if (anim != null)
+        {
+            anim.SetBool("Smashing", false);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision2D)
@@ -89,6 +101,7 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
             //Debug.Log("<color=yellow>Losing contact with " + collision2D.gameObject.name + "!</color>");
             isInContact = false;
             target = null;
+            anim.SetBool("Smashing", false);
         }
     }
 }
