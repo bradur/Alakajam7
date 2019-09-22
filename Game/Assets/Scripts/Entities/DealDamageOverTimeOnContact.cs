@@ -45,11 +45,6 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
         target = targetEntity;
         ResetDamageInterval();
         damageTimer = 0f;
-        if (anim != null)
-        {
-            anim.SetBool("Smashing", true);
-            anim.SetTrigger("StartSmash");
-        }
     }
 
     private void ResetDamageInterval() {
@@ -57,6 +52,10 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
             damageInterval = 0f;
         } else {
             damageInterval = config.DamageDealInterval;
+        }
+        if (anim != null)
+        {
+            anim.Play("Smash", -1, 0);
         }
     }
 
@@ -77,7 +76,7 @@ public class DealDamageOverTimeOnContact : MonoBehaviour
         target = null;
         if (anim != null)
         {
-            anim.SetBool("Smashing", false);
+            anim.Play("Walk", -1, 0);
         }
     }
 
